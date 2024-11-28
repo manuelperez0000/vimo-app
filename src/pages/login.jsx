@@ -1,6 +1,6 @@
 const Login = () => {
-    return (<>
+    return (<div className="bg-gray">
         Login
-    </>)
+    </div>)
 }
 export default Login

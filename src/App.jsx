@@ -1,16 +1,10 @@
 import Router from "./router"
-import { Link } from "react-router-dom"
-import User from "./components/user"
-const App = () =>{
+import Nav from "./components/nav"
+import '../node_modules/bootstrap/dist/css/bootstrap.css'
+const App = () => {
   return (<>
-    <Link to='/home' >home</Link>
-    <Link to='/login' >Login</Link>
-    <Router/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <User/>
-    </>)
+    <Nav />
+    <Router />
+  </>)
 }
 export default App
