@@ -1,26 +1,8 @@
-import { methods } from "./utils"
-import useMethod from "./store"
-import { useEffect, useRef } from "react"
+import useDepositar from "./useDepositar"
 
 const Depositar = () => {
 
-  const inputRef = useRef(0)
-
-  const { method, setMethod, result, setResult } = useMethod()
-
-  const calcResult = (e) => {
-    const res = method.v != 0 ? (e.target.value / method.v).toFixed(2) : 0
-    setResult(res)
-  }
-
-  const getMethod = (e) => {
-    const selectedMethod = JSON.parse(e)
-    setMethod(selectedMethod)
-  }
-
-  useEffect(() => {
-    calcResult({ target: { value: inputRef.current.value } })
-  }, [method])
+  const { method, methods, result, inputRef, calcResult, getMethod } = useDepositar()
 
   return (
     <div className="container-fluid">

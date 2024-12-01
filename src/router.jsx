@@ -4,7 +4,7 @@ import Home from "./pages/home"
 import Enviar from "./pages/enviar"
 import Depositar from "./pages/depositar/depositar"
 import Movimientos from "./pages/movimientos"
-import Retirar from "./pages/retirar"
+import Retirar from "./pages/retirar/retirar"
 
 const Router = () => {
     return (<div className="px-5 py-1">

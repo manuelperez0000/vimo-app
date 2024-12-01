@@ -49,3 +49,13 @@ a{
 .text-sm{
     font-size: small;
 }
+.text-movements{
+    color: rgb(143, 143, 143) !important;
+    font-size: 14px;
+    font-weight: 200;
+}
+.text-movements-2{
+    color: rgb(90, 90, 90) !important;
+    font-size: 16px;
+    font-weight: 400;
+}
