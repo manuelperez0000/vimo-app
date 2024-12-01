@@ -9,6 +9,7 @@ const Depositar = () => {
       <div className="row">
         <div className="col-6 offset-3 py-4">
           <section>
+            <div className="title-section">Depositar</div>
             <div className="flex-between mb-4">
               <h5>Saldo en tu cuenta</h5>
               <p className="font-saldo"> <b>USD</b> 34,77</p>

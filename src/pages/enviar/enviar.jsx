@@ -35,6 +35,7 @@ const Enviar = () => {
       <div className="row">
         <div className="col-6 offset-3 py-4">
           <section>
+            <div className="title-section">Enviar</div>
             <div className="flex-between">
               <h5>Saldo en tu cuenta</h5>
               <p className="font-saldo"> <b>USD</b> 34,77</p>

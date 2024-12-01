@@ -3,7 +3,7 @@ import useDepositar from "../depositar/useDepositar"
 
 const Retirar = () => {
 
-  const { getMethod,methods } = useDepositar()
+  const { getMethod, methods } = useDepositar()
 
   const [value, setValue] = useState('0.00')
 
@@ -38,6 +38,7 @@ const Retirar = () => {
       <div className="row">
         <div className="col-6 offset-3 py-4">
           <section>
+            <div className="title-section">Retirar</div>
             <div className="flex-between mb-4">
               <h5>Saldo en tu cuenta</h5>
               <p className="font-saldo"> <b>USD</b> 34,77</p>

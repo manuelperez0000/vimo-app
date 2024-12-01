@@ -4,6 +4,7 @@ const Movimientos = () => {
       <div className="row">
         <div className="col-12 py-4">
           <section>
+          <div className="title-section">Movimientos</div>
             <table className="table">
               <thead>
                 <tr className="text-movements">

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import PerfilImage from "../components/perfil-image"
 import PerfilCard from "../components/perfilCard"
 
@@ -24,7 +25,9 @@ const Home = () => {
                         <p className="mb-4">
                             Disponible
                         </p>
-                        <button className="btn btn-secondary"> <i className="bi bi-send mx-1" /> Pagar o enviar </button>
+                        <Link to="/enviar">
+                            <button className="btn btn-secondary"> <i className="bi bi-send mx-1" /> Pagar o enviar </button>
+                        </Link>
                     </section>
 
                     <section className="mt-4">
@@ -36,7 +39,7 @@ const Home = () => {
                             Aquí encontrará sus movimientos recientes con PagosYa.
                         </p>
 
-                        <a href=""> <b>Ver todos mis movimientos </b> </a>
+                        <Link to="/movimientos"> <b>Ver todos mis movimientos </b> </Link>
                     </section>
 
                 </div>
@@ -59,7 +62,7 @@ const Home = () => {
                 </div>
             </div>
 
-           
+
         </div>
     )
 }
