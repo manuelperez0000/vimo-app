@@ -1,26 +1,30 @@
-body{
+body {
     background-color: rgb(240, 240, 240) !important;
 }
-p{
+
+p {
     color: var(--gray1);
 }
-nav{
-    background-color:var(--secondary);
+
+nav {
+    background-color: var(--secondary);
     display: flex;
     align-items: center;
     padding-top: 10px;
     padding-bottom: 10px;
 }
 
-.logo{
-    height: 50px;
+.logo {
+    height: 35px;
 }
-.links{
-    gap: 10px;
+
+.links {
+    gap: 5px;
     display: flex;
-    margin-left: 30px;
+    margin-left: 20px;
 }
-.link{
+
+.link {
     font-size: 16px;
     color: aliceblue !important;
     text-decoration: none;
@@ -29,7 +33,7 @@ nav{
     border-radius: 20px;
 }
 
-.link-active{
+.link-active {
     font-size: 16px;
     color: aliceblue !important;
     text-decoration: none;
@@ -39,41 +43,41 @@ nav{
     background-color: rgba(240, 248, 255, 0.082);
 }
 
-.link:hover{
+.link:hover {
     background-color: rgba(240, 248, 255, 0.082);
 }
 
-h1{
+h1 {
     padding: 0px;
     margin: 0px;
 }
 
-.btn-primary{
+.btn-primary {
     border-radius: 20px !important;
     padding: 5px 25px !important;
     background-color: var(--primary) !important;
 }
 
-.btn-secondary{
+.btn-secondary {
     border-radius: 20px !important;
     padding: 5px 25px !important;
     background-color: var(--secondary) !important;
 }
 
-.r-btns{
+.r-btns {
     display: flex;
     align-items: center;
-    gap:20px;
+    gap: 20px;
 }
 
-.bell{
+.bell {
     background-color: transparent;
     border: none;
     position: relative;
     font-size: 20px;
 }
 
-.notifications{
+.notifications {
     background-color: red;
     height: 15px;
     width: 15px;
@@ -84,16 +88,17 @@ h1{
     color: white;
     border: none;
     border-radius: 10px;
-    position:absolute;
+    position: absolute;
     top: 0px;
     right: -5px;
 }
-.perfil-saldo{
+
+.perfil-saldo {
     display: flex;
     justify-content: space-between;
 }
 
-.foto-perfil{
+.foto-perfil {
     background-color: var(--secondary);
     width: 50px;
     height: 50px;
@@ -106,66 +111,259 @@ h1{
 
 }
 
-.fast-send{
+.fast-send {
     transition: 0.3s;
 }
 
-.fast-send:hover{
+.fast-send:hover {
     cursor: pointer;
     background-color: rgba(11, 210, 11, 0.082);
 }
 
-.login-icon{
+.login-icon {
     font-size: 70px;
     color: var(--gray1);
     line-height: 40px;
 }
 
-.text-gray-1{
+.text-gray-1 {
     color: var(--gray1);
 }
 
-.bg-blue-1{
+.bg-blue-1 {
     background-color: var(--secondary) !important;
 }
 
-section{
+section {
     background-color: white !important;
     border-radius: 10px;
     padding: 15px;
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.176);
 }
 
-.send-input{
-    font-size: 30px;
+.send-input {
+    font-size: 40px;
     border: none;
     outline: none;
-    text-align: center;
+    text-align: start;
     width: 170px;
     font-weight: 600;
-    color: rgb(74, 74, 74);
+    color: var(--gray1);
 }
 
-.font-saldo{
+.dolar-icon {
+    font-size: 35px;
+    font-weight: 600;
+}
+
+.font-saldo {
     font-size: 20px;
 }
 
-.span-text{
+.span-text {
     border-right: 1px solid rgba(255, 0, 0, 0) !important;
 }
 
-.span-text2{
+.span-text2 {
     border-left: 1px solid rgba(255, 0, 0, 0) !important;
     font-weight: 600 !important;
 }
 
-.black{
+.black {
     color: rgb(49, 49, 49);
 }
-.title-section{
+
+.title-section {
     text-align: center;
     font-size: 20px;
     padding-bottom: 20px;
     font-weight: 600;
     color: var(--gray1);
+}
+
+.loader-back {
+    background-color: rgba(0, 0, 0, 0.251);
+    position: fixed;
+    z-index: 1;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ver-contrassena {
+    user-select: none
+}
+
+.cursor:hover {
+    cursor: pointer;
+}
+
+.mh-100 {
+    min-height: 100vh;
+}
+
+.bg-blue {
+    background-color: var(--primary) !important;
+}
+
+.btn-home {
+    width: 200px;
+    height: 40px;
+    border-radius: 20px;
+    border: 0px solid transparent;
+    box-shadow: 5px 3px 5px rgba(0, 0, 0, 0.322);
+}
+
+.btn-home-1 {
+    background-color: rgb(26, 111, 209);
+    color: white;
+}
+
+.btn-home-2 {
+    background-color: white;
+    color: rgb(49, 49, 49);
+}
+
+.home-buttons {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.text-light-blue {
+    color: rgb(138, 191, 238);
+}
+
+.input-correo-envia {
+    width: 100%;
+    border: 1px solid var(--gray2);
+    outline: 1px solid var(--gray2);
+    height: 50px;
+    border-radius: 25px;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 20px;
+    color: var(--gray1);
+}
+
+.btn-elegir {
+    border: 1px solid rgba(0, 0, 0, 0.189);
+    padding: 5px 20px;
+    border-radius: 15px;
+    background-color: var(--bg-modal);
+}
+
+.bg-modal {
+    background-color: var(--bg-modal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    z-index: 1;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 100vh;
+}
+
+.modal-body {
+    padding: 30px !important;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px;
+    max-width: 60%;
+    background-color: aliceblue;
+}
+
+.left-msg-w {
+    display: flex;
+    margin-bottom: 10px;
+    max-width: 90%;
+}
+
+.left-msg {
+    padding: 3px 7px;
+    border-radius: 7px;
+    color: var(--gray2);
+    background-color: white;
+}
+
+.right-msg {
+    max-width: 90%;
+    padding: 3px 7px;
+    background-color: rgb(217,253,211);
+    border-radius: 7px;
+    color: var(--gray2);
+}
+
+.right-msg-w {
+    display: flex;
+    justify-content: end;
+    margin-bottom: 10px;
+}
+
+.item-msg{
+    color: var(--gray2);
+    margin-bottom: 1px;
+}
+.chat{
+    position: fixed;
+    z-index: 1;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+}
+
+.copy{
+    height: 20px;
+    padding: 2px;
+    transition: 0.3s;
+    width: 20px;    
+}
+.copy:hover{
+    cursor: pointer;
+    background-color: rgb(224, 245, 216);
+    border-radius: 10px;
+    color: rgb(9, 36, 59);
+}
+
+.chat-c{
+    margin-bottom: 120px;
+}
+
+.principal-msg{
+    background-color: white;
+    padding: 17px;
+    border-radius: 7px;
+}
+.form-control-transparent{
+    border: none;
+    outline: none;
+}
+
+.chat-icons{
+    font-size: 30px;
+}
+
+.hora-msg{
+    font-size: 12px;
+    color: var(--gray2);
+    text-align: end;
+    line-height: 10px;
+}
+
+nav{
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+}
+
+.wraper-page{
+    margin-top: 70px;
 }

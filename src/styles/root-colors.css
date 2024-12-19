@@ -1,5 +1,7 @@
 :root {
-    --primary: rgb(0, 157, 255);
-    --secondary:rgb(4, 65, 126);
-    --gray1:rgb(61, 61, 61);
+    --primary: rgb(4, 65, 126);
+    --secondary: rgb(4, 65, 126);
+    --gray1: rgb(58, 58, 58);
+    --gray2: rgb(117, 117, 117);
+    --bg-modal: rgba(0, 0, 0, 0.169);
 }

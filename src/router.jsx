@@ -7,22 +7,27 @@ import Enviar from "./pages/enviar/enviar"
 import Depositar from "./pages/depositar/depositar"
 import Movimientos from "./pages/movimientos"
 import Retirar from "./pages/retirar/retirar"
+import Dashboard from "./pages/dashboard"
+import Wraper from "./components/wraper"
+import Comercio from "./pages/comercio/comercio"
 
 const Router = () => {
-    return (<div className="px-5 py-1">
+    return (
         <Routes>
-            <Route path="/enviar" element={<Enviar />} />
-            <Route path="/home" element={<Home />} />
-            <Route path="/depositar" element={<Depositar />} />
-            <Route path="/movimientos" element={<Movimientos />} />
-            <Route path="/retirar" element={<Retirar />} />
+            <Route path="/enviar" element={<Wraper><Enviar /></Wraper>} />
+            <Route path="/dashboard" element={<Wraper><Dashboard /></Wraper>} />
+            <Route path="/depositar" element={<Wraper><Depositar /></Wraper>} />
+            <Route path="/movimientos" element={<Wraper><Movimientos /></Wraper>} />
+            <Route path="/retirar" element={<Wraper><Retirar /></Wraper>} />
+            <Route path="/comercio" element={<Wraper><Comercio /></Wraper>} />
+            
             <Route path="/login" element={<Login />} />
             <Route path="/registro" element={<Registro />} />
             <Route path="/recuperacion" element={<Recuperacion />} />
             <Route path="/" element={<Home />} />
             <Route path="/*" element={<div className="404">404 Not found</div>} />
         </Routes>
-    </div>)
+    )
 }
 
 export default Router

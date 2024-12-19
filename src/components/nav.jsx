@@ -1,14 +1,18 @@
-import { Link, useLocation  } from "react-router-dom"
+import { Link, useLocation, useNavigate } from "react-router-dom"
 import Logo from "./logo"
+import useApp from "../globals/useApp"
 
 const Nav = () => {
-
+    const { getSession, closeSession } = useApp()
     const location = useLocation()
-
     return (
         <nav className="px-5 flex-between">
             <div className="d-flex align-center">
                 <Logo />
+
+                <div className="text-light">
+
+                </div>
                 <div className="links">
                     <Link to='/enviar' className={location.pathname === '/enviar' ? "link-active" : "link"}>
                         <i className="bi bi-send mx-1" />
@@ -33,9 +37,14 @@ const Nav = () => {
                     <i className="bi bi-bell text-light" />
                     <div className="notifications"> 5 </div>
                 </button>
-                <Link to='/login'>
-                    <button className="btn btn-primary"> Login <i className="bi bi-person-circle" />  </button>
-                </Link>
+
+                {getSession ? <>
+                    <button onClick={closeSession} className="btn btn-primary"> Cerrar Sesion <i className="bi bi-lock-fill" />  </button>
+                </> : <>
+                    <Link to='/login'>
+                        <button className="btn btn-primary"> Login <i className="bi bi-person-circle" />  </button>
+                    </Link>
+                </>}
             </div>
         </nav>
     )

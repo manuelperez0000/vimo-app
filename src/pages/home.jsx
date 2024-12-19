@@ -1,68 +1,24 @@
 import { Link } from "react-router-dom"
-import PerfilImage from "../components/perfil-image"
-import PerfilCard from "../components/perfilCard"
-
+import LogoSVG from '../assets/logo.svg'
 const Home = () => {
     return (
-        <div className="container-fluid">
-            <div className="row">
-                <div className="col-12 mb-2 ">
-                    Bienvenido, Manuel Jose Perez
+        <div className="bg-blue mh-100 flex-center">
+            <div className="text-center">
+                <div>
+                    <img height={250} src={LogoSVG} alt="" />
+                </div>
+                <div className="text-light-blue mt-3">
+                    Bienvenido a la mejor aplicacion de envio de dinero del mundo
+                </div>
+                <div className="home-buttons mt-5">
+                    <Link to={'/login'}>
+                        <button className="btn-home btn-home-1"> <i className="bi bi-person-fill"/> Iniciar sesion</button>
+                    </Link>
+                    <Link to={'/registro    '}>
+                        <button className="btn-home btn-home-2"> <i className="bi bi-list" /> Registrarse</button>
+                    </Link>
                 </div>
             </div>
-            <div className="row">
-                <div className="col-5">
-                    <section>
-                        <div className="perfil-saldo">
-                            <h5 className="mb-4">
-                                Saldo en tu cuenta
-                            </h5>
-                            <PerfilImage />
-                        </div>
-                        <h2 className="m-0 p-0">
-                            USD 34,57
-                        </h2>
-                        <p className="mb-4">
-                            Disponible
-                        </p>
-                        <Link to="/enviar">
-                            <button className="btn btn-secondary"> <i className="bi bi-send mx-1" /> Pagar o enviar </button>
-                        </Link>
-                    </section>
-
-                    <section className="mt-4">
-                        <h5 className="mb-4">
-                            Movimientos recientes
-                        </h5>
-                        <p>
-                            Consulte el dinero enviado y recibido.
-                            Aquí encontrará sus movimientos recientes con PagosYa.
-                        </p>
-
-                        <Link to="/movimientos"> <b>Ver todos mis movimientos </b> </Link>
-                    </section>
-
-                </div>
-                <div className="col-7">
-                    <section>
-                        <h5 className="mb-4">
-                            Envio Rapido
-                        </h5>
-                        <div className="row">
-                            <PerfilCard />
-                            <PerfilCard />
-                            <PerfilCard />
-                            <PerfilCard />
-                            <PerfilCard />
-                            <PerfilCard />
-                            <PerfilCard />
-                            <PerfilCard />
-                        </div>
-                    </section>
-                </div>
-            </div>
-
-
         </div>
     )
 }

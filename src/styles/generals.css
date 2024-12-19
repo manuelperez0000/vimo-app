@@ -43,7 +43,7 @@ a{
 }
 
 .text-gray-2{
-    color: rgb(164, 164, 164);
+    color: var(--gray2);
 }
 
 .text-sm{
