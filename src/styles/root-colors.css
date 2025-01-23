@@ -1,7 +1,8 @@
 :root {
     --primary: rgb(4, 65, 126);
-    --secondary: rgb(4, 65, 126);
+    --secondary: rgb(47, 47, 47);
     --gray1: rgb(58, 58, 58);
     --gray2: rgb(117, 117, 117);
-    --bg-modal: rgba(0, 0, 0, 0.169);
+    --bg-modal: rgba(0, 0, 0, 0.329);
+    --white: white;
 }

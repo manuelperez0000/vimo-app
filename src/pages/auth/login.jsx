@@ -37,7 +37,7 @@ const Login = () => {
                                             </Link>
                                         </div>
                                         <div className="text-center">
-                                            <button className="btn btn-secondary">
+                                            <button className="btn btn-primary">
                                                 <div className="mx-5">
                                                     Ingresar
                                                 </div>

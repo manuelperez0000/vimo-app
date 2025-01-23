@@ -8,7 +8,7 @@ const Nav = () => {
     return (
         <nav className="px-5 flex-between">
             <div className="d-flex align-center">
-                <Logo />
+                <Logo h={35} type={1}/>
 
                 <div className="text-light">
 

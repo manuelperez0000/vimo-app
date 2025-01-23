@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom"
-import PerfilImage from "../components/perfil-image"
-import PerfilCard from "../components/perfilCard"
-import useApp from "../globals/useApp"
-import money from "../libs/money"
+import PerfilImage from "../../components/perfil-image"
+import PerfilCard from "../../components/perfilCard"
+import useApp from "../../globals/useApp"
+import money from "../../libs/money"
+import EnvioRapido from "./envioRapido/envioRapido"
 
 const Dashboard = () => {
 
@@ -31,7 +32,7 @@ const Dashboard = () => {
                             Disponible
                         </p>
                         <Link to="/enviar">
-                            <button className="btn btn-secondary"> <i className="bi bi-send mx-1" /> Pagar o enviar </button>
+                            <button className="btn btn-primary"> <i className="bi bi-send mx-1" /> Pagar o enviar </button>
                         </Link>
                     </section>
 
@@ -49,21 +50,7 @@ const Dashboard = () => {
 
                 </div>
                 <div className="col-7">
-                    <section>
-                        <h5 className="mb-4">
-                            Envio Rapido
-                        </h5>
-                        <div className="row">
-                            <PerfilCard />
-                            <PerfilCard />
-                            <PerfilCard />
-                            <PerfilCard />
-                            <PerfilCard />
-                            <PerfilCard />
-                            <PerfilCard />
-                            <PerfilCard />
-                        </div>
-                    </section>
+                    <EnvioRapido />
                 </div>
             </div>
 

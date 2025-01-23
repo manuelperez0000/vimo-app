@@ -64,7 +64,6 @@ const useAuth = () => {
             setLoading(false)
             if (response) notify.success('Logueado con exito')
             const localData = response.data.body
-            console.log(localData)
             localStorage.setItem('user', JSON.stringify(localData))
             setUser(localData)
             navigate('/dashboard')

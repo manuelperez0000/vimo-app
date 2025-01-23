@@ -7,15 +7,11 @@ p {
 }
 
 nav {
-    background-color: var(--secondary);
+    background-color: var(--primary);
     display: flex;
     align-items: center;
     padding-top: 10px;
     padding-bottom: 10px;
-}
-
-.logo {
-    height: 35px;
 }
 
 .links {
@@ -62,6 +58,9 @@ h1 {
     border-radius: 20px !important;
     padding: 5px 25px !important;
     background-color: var(--secondary) !important;
+    border: 1px solid transparent !important;
+    box-shadow: none;
+    outline: none;
 }
 
 .r-btns {
@@ -131,7 +130,7 @@ h1 {
 }
 
 .bg-blue-1 {
-    background-color: var(--secondary) !important;
+    background-color: var(--primary) !important;
 }
 
 section {
@@ -253,10 +252,12 @@ section {
 }
 
 .btn-elegir {
-    border: 1px solid rgba(0, 0, 0, 0.189);
+    border: 1px solid rgba(0, 0, 0, 0.094);
     padding: 5px 20px;
     border-radius: 15px;
-    background-color: var(--bg-modal);
+    background-color: var(--primary);
+    color: var(--white);
+    cursor: pointer;
 }
 
 .bg-modal {
@@ -276,8 +277,9 @@ section {
     padding: 30px !important;
     border-radius: 10px;
     box-shadow: 5px 5px 10px;
-    max-width: 60%;
-    background-color: aliceblue;
+    min-width: 50vw;
+    max-width: 70%;
+    background-color: rgb(255, 255, 255);
 }
 
 .left-msg-w {
@@ -296,7 +298,7 @@ section {
 .right-msg {
     max-width: 90%;
     padding: 3px 7px;
-    background-color: rgb(217,253,211);
+    background-color: rgb(217, 253, 211);
     border-radius: 7px;
     color: var(--gray2);
 }
@@ -307,11 +309,12 @@ section {
     margin-bottom: 10px;
 }
 
-.item-msg{
+.item-msg {
     color: var(--gray2);
     margin-bottom: 1px;
 }
-.chat{
+
+.chat {
     position: fixed;
     z-index: 1;
     bottom: 0px;
@@ -319,51 +322,141 @@ section {
     width: 100%;
 }
 
-.copy{
+.copy {
     height: 20px;
     padding: 2px;
     transition: 0.3s;
-    width: 20px;    
+    width: 20px;
 }
-.copy:hover{
+
+.copy:hover {
     cursor: pointer;
     background-color: rgb(224, 245, 216);
     border-radius: 10px;
     color: rgb(9, 36, 59);
 }
 
-.chat-c{
+.chat-c {
     margin-bottom: 120px;
 }
 
-.principal-msg{
+.principal-msg {
     background-color: white;
     padding: 17px;
     border-radius: 7px;
 }
-.form-control-transparent{
+
+.form-control-transparent {
     border: none;
     outline: none;
 }
 
-.chat-icons{
+.chat-icons {
     font-size: 30px;
 }
 
-.hora-msg{
+.hora-msg {
     font-size: 12px;
     color: var(--gray2);
     text-align: end;
     line-height: 10px;
 }
 
-nav{
+nav {
     position: fixed;
     top: 0px;
     left: 0px;
     width: 100vw;
 }
 
-.wraper-page{
+.wraper-page {
     margin-top: 70px;
+}
+
+.body-modal {
+    background-color: rgb(255, 255, 255);
+    padding: 30px;
+    font-size: 16px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 15px rgba(39, 39, 39, 0.358);
+    max-height: 90vh;
+    min-width: 40%;
+}
+
+.mw {
+    min-width: 50%;
+    min-height: 70%;
+}
+
+.cancel-w {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
+.cancel-btn {
+    height: 36px;
+    width: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 18px;
+    transition: 0.4s;
+}
+
+.cancel-btn:hover {
+    cursor: pointer;
+    background-color: rgb(243, 205, 205);
+}
+
+.hover-red:hover {
+    background-color: rgb(243, 205, 205) !important;
+}
+
+.cancel {
+    font-size: 26px;
+}
+
+
+.border {
+    border: 1px solid gray;
+}
+
+.check-icon {
+    font-size: 80px !important;
+}
+
+.bg-primary {
+    background-color: var(--primary) !important;
+}
+
+.m-contacts {
+    min-width: 50%;
+}
+
+.contacts-wrapper {
+    overflow-y: scroll;
+    max-height: 65vh;
+}
+
+.contact {
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-bottom: 2px;
+    border: 1px solid transparent;
+    transition: 0.3s;
+}
+
+.contact h4{
+    color: var(--gray1);
+    margin-bottom: 0px;
+}
+.contact:hover {
+    background-color: rgba(76, 255, 60, 0.078);
+    cursor: pointer;
+    border: 1px solid var(--primary);
+}
+
+.border{
+    border-radius: 20px;
 }

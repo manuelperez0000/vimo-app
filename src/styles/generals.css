@@ -1,4 +1,4 @@
-body{
+body {
     padding: 0px;
     margin: 0px;
     box-sizing: border-box;
@@ -7,55 +7,57 @@ body{
     background-color: red;
 }
 
-.bg-gray{
+.bg-gray {
     background-color: rgb(137, 134, 134);
 }
 
-.flex-between{
+.flex-between {
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
-.align-center{
+
+.align-center {
     display: flex;
     align-items: center;
 }
 
-a{
+a {
     text-decoration: none !important;
 }
-.x-center{
+
+.x-center {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
 }
 
-.flex-center{
+.flex-center {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.formated{
+.formated {
     margin: 0px;
     padding: 0px;
 }
 
-.text-gray-2{
+.text-gray-2 {
     color: var(--gray2);
 }
 
-.text-sm{
+.text-sm {
     font-size: small;
 }
-.text-movements{
-    color: rgb(143, 143, 143) !important;
-    font-size: 14px;
-    font-weight: 200;
-}
-.text-movements-2{
-    color: rgb(90, 90, 90) !important;
+
+.text-movements {
+    color: var(--primary) !important;
     font-size: 16px;
-    font-weight: 400;
+    font-weight: 600;
+}
+
+.tr-move td {
+    color: rgb(110, 110, 110) !important;
 }

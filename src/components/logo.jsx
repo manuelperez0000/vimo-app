@@ -1,8 +1,11 @@
-import logo from '../assets/logo2.png'
+import logo1 from '../assets/logo2.png'
+import logo2 from '../assets/logoBlanco.svg'
 import { Link } from 'react-router-dom'
-const Logo = () => {
+const Logo = ({ h, type }) => {
     return (<Link to='/dashboard'>
-        <img src={logo} className='logo' />
+        {type === 1 && <img src={logo1} height={h} />}
+        {type === 2 && <img src={logo2} height={h} />}
+
     </Link>)
 
 }
