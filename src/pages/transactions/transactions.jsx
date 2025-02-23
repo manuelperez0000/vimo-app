@@ -1,7 +1,9 @@
 import useTransactions from "./useTransactions"
-const myEamil = JSON.parse(localStorage.getItem('user')).user.email
 
 const Movimientos = () => {
+  
+  const user = localStorage.getItem('user')
+  const myEamil = user && JSON.parse(user).user.email
 
   const { transactions, formatFecha } = useTransactions()
 
@@ -30,7 +32,7 @@ const Movimientos = () => {
                     <td> {t._id} </td>
                     <td> {t.toEmail} </td>
                     <td>
-                      {myEamil === t.fromEmail ? <span className="text-danger">Enviado</span> : <span className="text-success">Recibido</span>}
+                      {myEamil ? myEamil  === t.fromEmail ? <span className="text-danger">Enviado</span> : <span className="text-success">Recibido</span> : ""}
                     </td>
                     <td className='text-end'>
                       <span className={t.fromEmail === myEamil ? "text-danger" : "text-success"}>
