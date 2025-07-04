@@ -2,9 +2,9 @@ import { Link } from "react-router-dom"
 
 const Recuperacion = () => {
   return (
-    <div className="container-fluid">
+    <div className="container-fluid bg-blue mh-100">
       <div className="row">
-        <div className="col-4 offset-4 mt-4">
+        <div className="col-12 col-sm-10 offset-sm-1 col-md-4 offset-md-4 mt-4">
           <div className="card text-center p-4">
             <i className="bi bi-person-circle login-icon" />
             <h1 className="text-gray-1 mb-4">Recuperacion de contraseña</h1>
@@ -18,7 +18,7 @@ const Recuperacion = () => {
                   <p className="mb-2">Te enviaremos un correo de recuperacion</p>
                 </div>
                 <div className="text-center">
-                  <button className="btn btn-secondary">
+                  <button className="btn btn-primary">
                     <div className="mx-5">
                       Enviar
                     </div>

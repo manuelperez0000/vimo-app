@@ -1,6 +1,5 @@
 import { useNavigate } from 'react-router-dom'
 import useUserStorrGlobal from './useUserStoreGlobal'
-import { useEffect } from 'react'
 import useUser from './useUser'
 
 const useApp = () => {

@@ -1,8 +1,72 @@
 import { Link } from "react-router-dom"
 import useAuth from "./asets/useAuth"
 import LogoBlanco from '../../assets/logoblanco.svg'
+import { useEffect, useState } from "react"
 const Login = () => {
     const { sendLoginForm } = useAuth()
+
+    const [eye, setEye] = useState(false)
+    const [remember, setRemember] = useState(false)
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+
+    useEffect(() => {
+        getUserLoginPreference()
+    }, [])
+
+    const getUserLoginPreference = () => {
+
+        const eye = localStorage.getItem('eye')
+        eye === 'true' ? setEye(true) : setEye(false)
+
+        const remember = localStorage.getItem('remember')
+        remember === 'true' ? setRemember(true) : setRemember(false)
+
+        const email_ = localStorage.getItem('email')
+        email_ && remember === 'true' && setEmail(email_)
+
+        const password_ = localStorage.getItem('password')
+        password_ && remember === 'true' && setPassword(password_)
+
+        remember === 'false' && (localStorage.removeItem('email'), localStorage.removeItem('password'))
+
+    }
+
+    const handleEye = () => {
+        if (eye) {
+            setEye(false)
+            localStorage.setItem('eye', 'false')
+        } else {
+            setEye(true)
+            localStorage.setItem('eye', 'true')
+        }
+    }
+
+    const handleRemember = () => {
+        if (remember) {
+            setRemember(false)
+            localStorage.setItem('remember', 'false')
+        } else {
+            setRemember(true)
+            localStorage.setItem('remember', 'true')
+        }
+    }
+
+    const handleEmail = (e) => {
+        localStorage.setItem('email', e.target.value)
+        setEmail(e.target.value)
+    }
+
+    const handlePassword = (e) => {
+        localStorage.setItem('password', e.target.value)
+        setPassword(e.target.value)
+    }
+
+    const handleCheckedRemember = (e) => {
+        const checked = e.target.checked
+        setRemember(checked)
+    }
+
     return (
         <div className="bg-blue mh-100 flex-center">
             <div className="container-fluid">
@@ -17,16 +81,38 @@ const Login = () => {
                                     <form onSubmit={sendLoginForm}>
                                         <div className="input-group mb-3">
                                             <span className="input-group-text bg-blue-1 text-white" id="basic-addon1"><i className="bi bi-envelope-fill" /> </span>
-                                            <input name="email" defaultValue={'manuelperez.0000@gmail.com'} type="text" className="form-control" placeholder="Ingrese su correo electronico" aria-label="" aria-describedby="basic-addon1" />
+
+                                            <input
+                                                onChange={handleEmail}
+                                                name="email"
+                                                defaultValue={email}
+                                                type="text"
+                                                className="form-control"
+                                                placeholder="Ingrese su correo electronico"
+                                                aria-label=""
+                                                aria-describedby="basic-addon1" />
                                         </div>
+
                                         <div className="input-group mb-3">
-                                            <span className="input-group-text bg-blue-1 text-white" id="basic-addon1"><i className="bi bi-shield-lock-fill" /> </span>
-                                            <input name="password" defaultValue={'123456'} type="password" className="form-control" placeholder="Ingrese su contraseña" aria-label="" aria-describedby="basic-addon1" />
+
+                                            <span onClick={handleEye} className="input-group-text bg-blue-1 text-white" id="basic-addon1"><i className={eye ? "bi bi-eye-fill" : "bi bi-eye-slash-fill"} /> </span>
+
+                                            <input
+                                                onChange={handlePassword}
+                                                name="password"
+                                                defaultValue={password}
+                                                type={eye ? "text" : "password"}
+                                                className="form-control"
+                                                placeholder="Ingrese su contraseña"
+                                                aria-label=""
+                                                aria-describedby="basic-addon1" />
                                         </div>
+
                                         <div className="flex-between mb-4">
                                             <div className="flex-center">
                                                 <div className="form-check">
-                                                    <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+
+                                                    <input onClick={handleRemember} className="form-check-input" type="checkbox" onChange={handleCheckedRemember} checked={remember} id="flexCheckDefault" />
                                                     <label className="form-check-label" htmlFor="flexCheckDefault">
                                                         Recordarme
                                                     </label>

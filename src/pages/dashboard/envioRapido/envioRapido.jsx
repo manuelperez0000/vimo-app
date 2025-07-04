@@ -13,6 +13,7 @@ const EnvioRapido = () => {
             </h5>
             <div className="row">
                 <PerfilCard contacts={user.contacts} />
+
             </div>
         </section>
     )

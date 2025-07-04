@@ -1,18 +1,17 @@
 import { Link, useLocation, useNavigate } from "react-router-dom"
 import Logo from "./logo"
 import useApp from "../globals/useApp"
-
+import useUserStorGlobal from "../globals/useUserStoreGlobal"
 const Nav = () => {
+
+    const { user } = useUserStorGlobal()
     const { getSession, closeSession } = useApp()
     const location = useLocation()
+
     return (
         <nav className="px-5 flex-between">
             <div className="d-flex align-center">
-                <Logo h={35} type={1}/>
-
-                <div className="text-light">
-
-                </div>
+                <Logo h={35} type={1} />
                 <div className="links">
                     <Link to='/enviar' className={location.pathname === '/enviar' ? "link-active" : "link"}>
                         <i className="bi bi-send mx-1" />
@@ -30,6 +29,15 @@ const Nav = () => {
                         <i className="bi bi-card-list mx-1" />
                         Movimientos
                     </Link>
+
+                    {/* Atencion al cliente */}
+                    {user?.user?.level == 1 || user?.user?.level == 2 ?
+                        <Link to='/atencion' className={location.pathname === '/atencion' ? "link-active bg-success" : "bg-success link"}>
+                            <i className="bi bi-shop mx-1" />
+                            Atencion
+                        </Link> : null}
+                    
+
                 </div>
             </div>
             <div className="r-btns">

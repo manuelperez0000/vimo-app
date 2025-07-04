@@ -206,7 +206,8 @@ section {
 }
 
 .bg-blue {
-    background-color: var(--primary) !important;
+    /* background-color: var(--primary) !important; */
+    background: linear-gradient(var(--primary), rgb(1, 42, 68));
 }
 
 .btn-home {
@@ -449,21 +450,29 @@ nav {
     transition: 0.3s;
 }
 
-.contact h4{
+.contact h4 {
     color: var(--gray1);
     margin-bottom: 0px;
 }
+
 .contact:hover {
     background-color: rgba(76, 255, 60, 0.078);
     cursor: pointer;
     border: 1px solid var(--primary);
 }
 
-.border{
+.border {
     border-radius: 20px;
 }
 
-.logo-home{
-    max-width: 80%;
-    min-width: 30%;
+.logo-home {
+    height: 180px;
+}
+
+.btn-delete-contact {
+    font-size: 12px;
+    color: rgb(185, 16, 7);
+    border: none;
+    border-radius: 20px;
+    padding: 0px 15px;
 }

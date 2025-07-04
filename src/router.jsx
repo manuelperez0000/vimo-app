@@ -10,6 +10,8 @@ import Retirar from "./pages/retirar/retirar"
 import Dashboard from "./pages/dashboard/dashboard.jsx"
 import Wraper from "./components/wraper"
 import Comercio from "./pages/comercio/comercio"
+import Atencion from "./pages/comerciantes/atencion.jsx"
+import PayMethods from "./pages/admin/payMethods.jsx"
 
 const Router = () => {
     return (
@@ -21,6 +23,10 @@ const Router = () => {
             <Route path="/retirar" element={<Wraper><Retirar /></Wraper>} />
             <Route path="/comercio" element={<Wraper><Comercio /></Wraper>} />
             
+            {/* comerciantes */}
+            <Route path="/atencion" element={<Wraper><Atencion /></Wraper>} />
+            <Route path="/payMethods" element={<Wraper><PayMethods /></Wraper>} />
+
             <Route path="/login" element={<Login />} />
             <Route path="/registro" element={<Registro />} />
             <Route path="/recuperacion" element={<Recuperacion />} />
