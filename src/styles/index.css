@@ -476,3 +476,40 @@ nav {
     border-radius: 20px;
     padding: 0px 15px;
 }
+
+.movilNav {
+    height: 70px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: var(--primary);
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    align-items: center;
+}
+
+.linkMovil {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: red;
+}
+
+.btn-movil {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.link-active-movil {
+
+    font-size: 16px;
+    color: aliceblue !important;
+    text-decoration: none;
+    transition: 0.3s;
+    border-radius: 2px;
+    background-color: rgba(240, 248, 255, 0.13);
+
+}

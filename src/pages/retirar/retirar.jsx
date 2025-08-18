@@ -1,11 +1,13 @@
 import { useState } from "react"
 import useDepositar from "../depositar/useDepositar"
+import ModalRetirar from "./modalRetirar"
 
 const Retirar = () => {
 
   const { getMethod, methods } = useDepositar()
 
   const [value, setValue] = useState('0.00')
+  const [modal, setModal] = useState(false)
 
   const handleNumberInput = (e) => {
     const input = e.target.value
@@ -35,6 +37,7 @@ const Retirar = () => {
 
   return (
     <div className="container-fluid">
+      <ModalRetirar setModal={setModal} modal={modal} />
       <div className="row">
         <div className="col-6 offset-3 py-4">
           <section>
@@ -67,7 +70,7 @@ const Retirar = () => {
               </select>
 
               <div className="text-end">
-                <a href=""> + Agreagar nuevo metodo de retiro</a>
+                <button className="btn btn-primary" onClick={() => setModal(true)}> + Agregar nuevo metodo de retiro</button>
               </div>
 
               <div className="text-end">

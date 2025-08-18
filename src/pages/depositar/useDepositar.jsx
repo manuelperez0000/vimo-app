@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react"
 import useMethod from "./store"
 import { methods } from "./utils"
-import useLoading from '../../components/loader/useLoading'
+/* import useLoading from '../../components/loader/useLoading' */
 import { useNavigate } from "react-router-dom"
 const useDepositar = () => {
     const navigate = useNavigate()

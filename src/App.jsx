@@ -1,5 +1,4 @@
 import Router from "./router"
-import Nav from "./components/nav"
 import useNotify from "./libs/notify/notify"
 import 'react-toastify/dist/ReactToastify.css'
 import Loader from "./components/loader/loader"

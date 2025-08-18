@@ -71,7 +71,7 @@ const Login = () => {
         <div className="bg-blue mh-100 flex-center">
             <div className="container-fluid">
                 <div className="row pb-5">
-                    <div className="col-12 col-sm-10 offset-sm-1 col-md-4 offset-md-4 mt-4">
+                    <div className="col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4">
                         <div className="card p-4">
                             {/* <i className="bi bi-person-circle login-icon" /> */}
                             <img src={LogoBlanco} height={160} alt="Logo PagosYa" />

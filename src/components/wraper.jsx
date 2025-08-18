@@ -3,6 +3,7 @@ import Nav from "./nav"
 import { useEffect } from "react"
 import useApp from "../globals/useApp"
 
+// eslint-disable-next-line react/prop-types
 const Wraper = ({ children }) => {
 
     const { user } = useApp()

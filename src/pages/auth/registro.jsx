@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom"
 import useAuth from "./asets/useAuth"
 import { useState } from "react"
+import LogoBlanco from '../../assets/logoblanco.svg'
 
 const Registro = () => {
 
@@ -16,10 +17,10 @@ const Registro = () => {
     <div className="bg-blue mh-100 flex-center">
       <div className="container-fluid">
         <div className="row pb-5">
-          <div className="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-xl-6 offset-xl-3 mt-4">
+          <div className="col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4 mt-5">
             <div className="card text-center p-4">
-              <i className="bi bi-person-circle login-icon" />
-              <h1 className="text-gray-1 mb-4">Registrate</h1>
+              <img src={LogoBlanco} height={160} alt="Logo PagosYa" />
+              <span className="text-gray-1 text-start mb-2">Registrate gratis</span>
               <div>
                 <form onSubmit={registerFormSubmit}>
                   <div className="text-start">

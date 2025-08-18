@@ -2,44 +2,29 @@ import { Link } from "react-router-dom"
 import LogoSVG from '../assets/logo-pagos-ya.png'
 const Home = () => {
     return (
-        <div className="bg-blue mh-100 flex-center">
-            <div className="text-center">
-                <div className="container-fluid mt-4">
-                    <div className="row justify-content-center">
-                        <div className="col-12 col-md-4 text-center d-flex justify-content-center">
-                            <img className="logo-home" src={LogoSVG} alt="Logo PagosYa" />
+        <div className="bg-blue mh-100 p-2 w-100 flex-center">
+            <div className="container-fluid">
+                <div className="row">
+                    <div className="col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4 mt-5 text-center">
+                        <img className="logo-home" src={LogoSVG} alt="Logo PagosYa" />
+                        <div className="col-12 text-light text-center mt-2">
+                            Envía, ahorra y protege ya
                         </div>
-                    </div>
-                    <div className="row">
-                        <div className="col-12">
-                            <div className="text-light-blue mt-3 px-4">
-                                Bienvenido a la mejor aplicacion de
-                                envio de dinero del mundo
+                        <div className="row mt-4">
+
+                            <div className="col-6 col-md-6">
+                                <Link to={'/login'}>
+                                    <button className="btn-home btn-home-1"> <i className="bi bi-person-fill" /> Iniciar sesion</button>
+                                </Link>
+                            </div>
+                            <div className="col-6 col-md-6">
+                                <Link to={'/registro'}>
+                                    <button className="btn-home btn-home-2"> <i className="bi bi-list" /> Registrarse</button>
+                                </Link>
                             </div>
                         </div>
                     </div>
-                    <div className="row justify-content-center mt-4">
-                        <div className="col-6 col-md-6">
-                            <Link to={'/login'}>
-                                <button className="btn-home btn-home-1"> <i className="bi bi-person-fill" /> Iniciar sesion</button>
-                            </Link>
-                        </div>
-                        <div className="col-6 col-md-6">
-                            <Link to={'/registro'}>
-                                <button className="btn-home btn-home-2"> <i className="bi bi-list" /> Registrarse</button>
-                            </Link>
-                        </div>
-                    </div>
-
                 </div>
-                {/* <div className="home-buttons mt-5">
-                    <Link to={'/login'}>
-                        <button className="btn-home btn-home-1"> <i className="bi bi-person-fill"/> Iniciar sesion</button>
-                    </Link>
-                    <Link to={'/registro    '}>
-                        <button className="btn-home btn-home-2"> <i className="bi bi-list" /> Registrarse</button>
-                    </Link>
-                </div> */}
             </div>
         </div>
     )
