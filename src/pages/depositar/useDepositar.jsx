@@ -1,6 +1,5 @@
 import { useEffect, useRef } from "react"
 import useMethod from "./store"
-import { methods } from "./utils"
 /* import useLoading from '../../components/loader/useLoading' */
 import { useNavigate } from "react-router-dom"
 const useDepositar = () => {
@@ -10,13 +9,19 @@ const useDepositar = () => {
     const { method, setMethod, result, setResult, setDepositModal } = useMethod()
 
     const calcResult = (e) => {
-        const res = method.v != 0 ? (e.target.value / method.v) : 0
-        setResult(res)
+        //const res = method.v != 0 ? (e.target.value / method.v) : 0
+        setResult(1212)
     }
 
-    const getMethod = (e) => {
-        const selectedMethod = JSON.parse(e)
-        setMethod(selectedMethod)
+    const getMethod = (methodObject) => {
+
+        if (methodObject !== 'none') {
+            const selectedMethod = JSON.parse(methodObject)
+            console.log(methodObject)
+            setMethod(selectedMethod)
+        } else {
+            setMethod(null)
+        }
     }
 
     const deposit = (e) => {
@@ -42,7 +47,6 @@ const useDepositar = () => {
         calcResult,
         getMethod,
         inputRef,
-        methods,
         deposit
 
     }

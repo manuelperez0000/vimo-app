@@ -2,35 +2,38 @@ import useDepositar from "./useDepositar"
 import money from '../../libs/money'
 import useUserStorGlobal from "../../globals/useUserStoreGlobal"
 import DepositModal from "./components/depositModal"
+import metyhodsComponents from '../../store/methodsComponents.json'
+
 const Depositar = () => {
 
-  const { method, methods, result, inputRef, calcResult, getMethod, deposit } = useDepositar()
+  const { method, result, inputRef, calcResult, getMethod, deposit } = useDepositar()
   const { user } = useUserStorGlobal()
 
   return (
     <div className="container-fluid">
       <DepositModal />
       <div className="row">
-        <div className="col-6 offset-3 py-4">
+        <div className="col-12 col-md-6 offset-md-3 py-4">
           <section>
             <div className="title-section">Depositar</div>
-            <div className="flex-between mb-4">
-              <h5>Saldo en tu cuenta</h5>
+            <div className="flex-between mb-1">
+              <h5 className="">Saldo en tu cuenta</h5>
               <p className="font-saldo"> <b>$ {user && money(user.user.balance)} USD </b></p>
             </div>
             <span className="text-gray-2 text-sm"> Metodo de deposito </span>
             <form onSubmit={deposit}>
 
-              <select name="method" onChange={(e) => getMethod(e.target.value)} className="form-select mb-4 mt-1">
+              <select name="method" onChange={(e) => getMethod(e.target.value)} className="form-select mb-2 mt-1">
                 <option value={JSON.stringify({ n: '', v: 0, c: 0, s: '' })}>Elija un metodo de deposito</option>
-                {methods.map((m, i) => {
-                  return <option key={i} value={JSON.stringify(m)}> {m.n} ({m.s}) </option>
+                {metyhodsComponents.methods.map((m, i) => {
+                  return <option key={i} value={JSON.stringify(m)}> {m.currencyName} ({m.abbreviation}) </option>
                 })}
+
               </select>
 
-              <div className="text-center mb-2">
+              {/* <div className="text-center mb-2">
                 <span>1 USD = {method.v} {method.s}</span>
-              </div>
+              </div> */}
               <span className="text-gray-2 text-sm">
                 Monto a depositar en <b> {method.s} </b>
               </span>

@@ -175,7 +175,7 @@ section {
 .title-section {
     text-align: center;
     font-size: 20px;
-    padding-bottom: 20px;
+    padding-bottom: 10px;
     font-weight: 600;
     color: var(--gray1);
 }
@@ -264,16 +264,15 @@ section {
 }
 
 .bg-modal {
-    background-color: var(--bg-modal);
-    display: flex;
-    align-items: center;
-    justify-content: center;
     position: fixed;
-    z-index: 1;
-    top: 0px;
-    left: 0px;
+    top: 0;
+    left: 0;
     width: 100vw;
     height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8);
+    
+    overflow: auto;
+    z-index: 1000;
 }
 
 .modal-body {
@@ -283,6 +282,8 @@ section {
     min-width: 50vw;
     max-width: 70%;
     background-color: rgb(255, 255, 255);
+    margin: 50px auto;
+    border-radius: 8px;
 }
 
 .left-msg-w {
@@ -373,7 +374,7 @@ nav {
 }
 
 .wraper-page {
-    margin-top: 70px;
+    padding-top: 60px;
 }
 
 .body-modal {
@@ -477,6 +478,10 @@ nav {
     padding: 0px 15px;
 }
 
+nav {
+    z-index: 1000;
+}
+
 .movilNav {
     height: 70px;
     width: 100%;
@@ -493,23 +498,35 @@ nav {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: red;
+    width: 20%;
 }
 
-.btn-movil {
+.link-active-movil {
+    width: 100%;
+}
+
+.link-movil {
+    width: 100%;
+}
+
+.btn-menu-movil {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    font-size: small;
+    color: aliceblue !important;
 }
 
 .link-active-movil {
-
     font-size: 16px;
-    color: aliceblue !important;
     text-decoration: none;
     transition: 0.3s;
     border-radius: 2px;
     background-color: rgba(240, 248, 255, 0.13);
+}
 
+.scroll-y {
+    overflow-y: scroll;
+    z-index: 1000;
 }
