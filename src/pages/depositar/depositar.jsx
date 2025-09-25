@@ -2,11 +2,11 @@ import useDepositar from "./useDepositar"
 import money from '../../libs/money'
 import useUserStorGlobal from "../../globals/useUserStoreGlobal"
 import DepositModal from "./components/depositModal"
-import metyhodsComponents from '../../store/methodsComponents.json'
+import { useNavigate } from "react-router-dom"
 
 const Depositar = () => {
-
-  const { method, result, inputRef, calcResult, getMethod, deposit } = useDepositar()
+  const navigate = useNavigate()
+  const { method, result, inputRef, calcResult, getMethod, deposit, methods } = useDepositar()
   const { user } = useUserStorGlobal()
 
   return (
@@ -14,6 +14,10 @@ const Depositar = () => {
       <DepositModal />
       <div className="row">
         <div className="col-12 col-md-6 offset-md-3 py-4">
+          <div className="text-end">
+          <button onClick={() => navigate("/mis-depositos")} className="btn btn-primary mb-3">Mis depositos</button>
+          </div>
+          
           <section>
             <div className="title-section">Depositar</div>
             <div className="flex-between mb-1">
@@ -24,35 +28,39 @@ const Depositar = () => {
             <form onSubmit={deposit}>
 
               <select name="method" onChange={(e) => getMethod(e.target.value)} className="form-select mb-2 mt-1">
-                <option value={JSON.stringify({ n: '', v: 0, c: 0, s: '' })}>Elija un metodo de deposito</option>
-                {metyhodsComponents.methods.map((m, i) => {
-                  return <option key={i} value={JSON.stringify(m)}> {m.currencyName} ({m.abbreviation}) </option>
+                <option value={'none'}>Elija un metodo de deposito</option>
+                {methods.length > 0 && methods.map((tasa, i) => {
+                  const _method = tasa.methodId
+                  return <option key={i} value={JSON.stringify(tasa)}>
+                    {_method.currencyName} ({_method.abbreviation}) - Precio  {tasa.sell}{_method.abbreviation} por dolar
+                  </option>
                 })}
-
               </select>
 
-              {/* <div className="text-center mb-2">
-                <span>1 USD = {method.v} {method.s}</span>
-              </div> */}
-              <span className="text-gray-2 text-sm">
-                Monto a depositar en <b> {method.s} </b>
-              </span>
-              <div className="input-group mb-3 mt-1">
-                <input name="amount" min={0} max={1500} ref={inputRef} onChange={calcResult} type="number" className="form-control span-text" placeholder="Ingrese el monto a depositar" aria-label="" aria-describedby="basic-addon1" />
-                <span className="input-group-text span-text2 bg-white" id="basic-addon1"> {method.s} </span>
-              </div>
 
-              <div className="mb-4">
-                <div className="w-100 text-sm text-gray-2">
-                  Total
+              {method && <>
+                <span className="text-gray-2 text-sm">
+                  Monto a depositar en <strong> {method?.methodId?.abbreviation} </strong>
+                </span>
+                <div className="input-group mb-3 mt-1">
+                  <input name="amount" min={0} max={1500} ref={inputRef} onChange={calcResult} type="number" className="form-control span-text" placeholder="Ingrese el monto a depositar" aria-label="" aria-describedby="basic-addon1" />
+                  <span className="input-group-text span-text2 bg-white" id="basic-addon1"> {method?.s} </span>
                 </div>
-                <h2 className="black">
-                  {money(result)} USD
-                </h2>
-              </div>
-              <div>
-                <button className="btn btn-primary w-100"> Depositar </button>
-              </div>
+
+                <div className="mb-4">
+                  <div className="w-100 text-sm text-gray-2">
+                    Total
+                  </div>
+                  <h2 className="black">
+                    {money(result)} USD
+                  </h2>
+                  <input type="hidden" name="result" value={result} />
+                </div>
+                <div>
+                  <button className="btn btn-primary w-100"> Depositar </button>
+                </div>
+              </>}
+
             </form>
           </section>
         </div>

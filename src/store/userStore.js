@@ -1,10 +1,13 @@
 import { createWithEqualityFn } from 'zustand/traditional'
+import {data} from './globalStore';
 
-const useUserStore = createWithEqualityFn((set) => ({
-    user: '',
-    setUser: (newState) => set(() => ({
-        user: newState
-    }))
-}))
+const useUserStore = createWithEqualityFn((set) => {
+    return data.map(([key, setter, defaultValue]) => ({
+        [key]: defaultValue,
+        [setter]: (newState) => set(() => ({
+            [key]: newState
+        }))
+    })).reduce((acc, curr) => ({ ...acc, ...curr }), {})
+})
 
 export default useUserStore

@@ -1,0 +1,32 @@
+[
+    {
+        "title": "Depositos",
+        "path": "/depositos",
+        "icon": "bi bi-cash-stack"
+    },
+    {
+        "title": "Retiros",
+        "path": "/retiros",
+        "icon": "bi bi-arrow-down-circle"
+    },
+    {
+        "title": "Transacciones",
+        "path": "/transacciones",
+        "icon": "bi bi-receipt"
+    },
+    {
+        "title": "Usuarios",
+        "path": "/usuarios",
+        "icon": "bi bi-people"
+    },
+    {
+        "title": "Métodos de Pago",
+        "path": "/metodos-de-pago",
+        "icon": "bi bi-credit-card"
+    },
+    {
+        "title": "Tasas",
+        "path": "/tasas",
+        "icon": "bi bi-bar-chart"
+    }
+]

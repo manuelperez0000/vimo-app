@@ -29,6 +29,10 @@ const Nav = () => {
                         <i className="bi bi-card-list mx-1" />
                         Movimientos
                     </Link>
+                    <Link to='/metodos-de-pago' className={location.pathname === '/metodos-de-pago' ? "link-active" : "link"}>
+                        <i className="bi bi-wallet2 mx-1" />
+                        Métodos de Pago
+                    </Link>
 
                     {/* Atencion al cliente */}
                     {user?.user?.level == 1 || user?.user?.level == 2 ?

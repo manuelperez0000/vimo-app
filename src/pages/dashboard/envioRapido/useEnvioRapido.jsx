@@ -1,5 +1,3 @@
-import { useEffect } from "react"
-
 const useEnvioRapido = () => {
 
     
@@ -8,7 +6,7 @@ const useEnvioRapido = () => {
         getContacts()
     }, []) */
     return {
-        contacts
+        /* contacts */
     }
 }
 

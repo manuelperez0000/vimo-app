@@ -1,0 +1,6 @@
+{
+  "data": [
+    ["user", "setUser",{}],
+    ["users", "setUsers",[]]
+  ]
+}

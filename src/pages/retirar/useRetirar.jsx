@@ -9,7 +9,7 @@ const useRetirar = () => {
 
   const [value, setValue] = useState('0.00')
   const [modal, setModal] = useState(false)
-  
+
   const getUserMethods = async () => {
     try {
       const response = await request.get(apiUrl + '/user/getUser')

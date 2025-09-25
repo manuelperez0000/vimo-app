@@ -1,4 +1,3 @@
-import { useEffect } from "react"
 import PerfilCard from "../../../components/perfilCard"
 import useUserStorGlobal from "../../../globals/useUserStoreGlobal"
 
@@ -13,7 +12,6 @@ const EnvioRapido = () => {
             </h5>
             <div className="row">
                 <PerfilCard contacts={user.contacts} />
-
             </div>
         </section>
     )
