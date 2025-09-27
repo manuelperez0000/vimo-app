@@ -4,9 +4,12 @@ import components from '../../store/methodsComponents.json'
 import { useNavigate } from "react-router-dom"
 import request from '../../libs/request'
 import urlApi from '../../utils/urlApi.js'
+import socket from '../../libs/socket';
+
 const useDepositar = () => {
     const navigate = useNavigate()
     const inputRef = useRef(0)
+     const socketRef = useRef(socket);
 
     const { method, setMethod, result, setResult, setDepositModal, methods, setMethods } = useMethodStore()
 
@@ -50,7 +53,9 @@ const useDepositar = () => {
             const response = await request.post(urlApi + '/deposit', data)
             console.log(response)
             setDepositModal(true)
+            socketRef.current.emit("newDeposit", data);
             setTimeout(() => {
+                setDepositModal(false)
                 navigate('/comercio/' + response.data.body._id)
             }, 2000);
         } catch (error) {

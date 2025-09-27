@@ -1,13 +1,16 @@
 //custom hook deposits
-import { useEffect } from 'react';
-import useStore from './useStore';
+import { useEffect, useRef, useState } from 'react';
+import socket from '../../../libs/socket';
 import request from '../../../libs/request'
 import apiurl from '../../../utils/urlApi';
 import { useNavigate } from "react-router-dom"
 
 const useDeposits = () => {
 
-    const { deposits, setDeposits } = useStore();
+    const socketRef = useRef(socket);
+
+    /* const { deposits, setDeposits } = useStore(); */
+    const [deposits, setDeposits] = useState([])
     const navigate = useNavigate();
 
     const fetchDeposits = async () => {
@@ -28,10 +31,28 @@ const useDeposits = () => {
     };
 
     useEffect(() => {
-        fetchDeposits();
-    }, []);
+    if (!socketRef.current) return;
 
-    return { fetchDeposits, deposits, setDeposits,handleAtender };
+    console.log('Depósitos actuales:', deposits);
+
+    // Obtener depósitos iniciales
+    fetchDeposits();
+
+    // Listener seguro para nuevos depósitos
+    const handleNewDeposit = (message) => {
+        console.log("mensaje del socket: ",message)
+        setDeposits((prevDeposits) => [...prevDeposits, message]);
+    };
+
+    socketRef.current.on("newDeposit", handleNewDeposit);
+
+    // Limpieza del listener al desmontar
+    return () => {
+        /* socketRef.current.off("newDeposit", handleNewDeposit); */
+    };
+}, []);
+
+    return { fetchDeposits, deposits, setDeposits, handleAtender };
 };
 
 export default useDeposits;
