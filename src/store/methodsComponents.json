@@ -1,4 +1,4 @@
-{
+ {
     "methods": [
         {
             "currencyName": "Binance",
@@ -6,7 +6,7 @@
             "type": "crypto",
             "id": 1,
             "components": [7]
-        },
+        }, 
         {
             "currencyName": "Pago Movil",
             "abbreviation": "VES",
@@ -19,14 +19,14 @@
             "abbreviation": "VES",
             "type": "crypto",
             "id": 3,
-            "components": [2, 3, 4, 5, 6]
+            "components": [2, 3, 4, 5]
         },
         {
             "currencyName": "Transferencia Banesco",
             "abbreviation": "VES",
             "type": "fiat",
             "id": 4,
-            "components": [2, 3, 4, 5, 6, 6]
+            "components": [2, 3, 4, 5]
         },
         {
             "currencyName": "Zelle",
@@ -47,7 +47,7 @@
             "abbreviation": "USD",
             "type": "fiat",
             "id": 7,
-            "components": [1,6,7]
+            "components": [1,7]
         }
     ],
     "components": [

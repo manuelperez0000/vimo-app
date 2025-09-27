@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react"
 import useMethodStore from "./store"
-/* import useLoading from '../../components/loader/useLoading' */
+import components from '../../store/methodsComponents.json'
 import { useNavigate } from "react-router-dom"
 import request from '../../libs/request'
 import urlApi from '../../utils/urlApi.js'
@@ -17,7 +17,12 @@ const useDepositar = () => {
 
     const getMethod = async (methodObject) => {
         if (methodObject !== 'none') {
-            setMethod(JSON.parse(methodObject))
+            const objMethod = JSON.parse(methodObject)
+            const id = objMethod.methodId.methodId
+            const componentes = components.methods[id - 1].components
+            let merged = objMethod
+            merged.componets = componentes
+            setMethod(merged)
         } else {
             setMethod(null)
         }
@@ -46,7 +51,7 @@ const useDepositar = () => {
             console.log(response)
             setDepositModal(true)
             setTimeout(() => {
-                navigate('/comercio/'+response.data.body._id)
+                navigate('/comercio/' + response.data.body._id)
             }, 2000);
         } catch (error) {
             console.log(error)
@@ -60,9 +65,9 @@ const useDepositar = () => {
         setMethods(response.data.body)
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         getDepositMethods()
-    },[])
+    }, [])
 
     return {
         method,

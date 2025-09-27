@@ -9,6 +9,10 @@ const useMetodoStore = createWithEqualityFn((set) => ({
     setShowModal: (newState) => set(() => ({
         showModal: newState
     })),
+    userMethods:[],
+    setUserMethods: (newState) => set(() => ({
+        userMethods: newState
+    }))
 }))
 
 export default useMetodoStore 
