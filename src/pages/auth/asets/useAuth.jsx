@@ -1,13 +1,15 @@
 import useAuthStore from "./useAuthStore"
 import request from '../../../libs/request.js'
 import useNotify from "../../../libs/notify/notify.jsx"
-import errorManager from "../../../libs/errorManager.jsx"
+import useErrorManager from "../../../libs/useErrorManager.jsx"
 import useLoading from "../../../components/loader/useLoading.jsx"
 import { useNavigate } from "react-router-dom"
 import useApp from "../../../globals/useApp.jsx"
 const apiUrl = import.meta.env.VITE_API_URL
 
 const useAuth = () => {
+
+    const errorManager = useErrorManager()
 
     const { setUser } = useApp()
 

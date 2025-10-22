@@ -1,5 +1,5 @@
 import { createWithEqualityFn } from 'zustand/traditional'
-import {data} from './globalStore';
+import {data} from './globalStore.json';
 
 const useUserStore = createWithEqualityFn((set) => {
     return data.map(([key, setter, defaultValue]) => ({

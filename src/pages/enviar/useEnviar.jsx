@@ -1,7 +1,7 @@
 import { useState } from "react"
 import useApp from "../../globals/useApp"
 import request from '../../libs/request.js'
-import errorManager from "../../libs/errorManager.jsx"
+import useErrorManager from "../../libs/useErrorManager.jsx"
 import { handleKeyDown } from "../../libs/utils.js"
 import useLoading from "../../components/loader/useLoading.jsx"
 import useConfirmStore from "./useConfirmStore.js"
@@ -9,6 +9,8 @@ import useEnviarStore from "./useEnviarStore.js"
 const apiUrl = import.meta.env.VITE_API_URL
 
 const useEnviar = () => {
+
+    const errorManager = useErrorManager()
     const { setSuccessModal, setSuccessData } = useEnviarStore()
     const { setModalConfirm, setDataModalConfirm } = useConfirmStore()
     const { setLoading } = useLoading()
@@ -154,7 +156,8 @@ const useEnviar = () => {
         errors,
         constactEmail,
         saveContact,
-        enviar
+        enviar,
+        email
     }
 }
 

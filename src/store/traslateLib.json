@@ -1,0 +1,8 @@
+{
+    "phone": "Telefono",
+    "email": "correo",
+    "document": "Cedula",
+    "bank": "Banco",
+    "userName": "Nombre",
+    "accountNumber": "Numero de Cuenta"
+}

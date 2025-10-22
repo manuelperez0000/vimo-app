@@ -1,5 +1,4 @@
-import { useState } from "react"
-import { onlyNumbersRejex } from '../../libs/generalRejex'
+import { useState, useEffect } from "react"
 import methodsComponents from '../../store/methodsComponents.json'
 import apiUrl from "../../libs/apiurl"
 import request from "../../libs/request"
@@ -12,22 +11,37 @@ const useModalRetirar = ({ setModal }) => {
     const { getUserMethods } = useRetirar()
     const [selectedComponent, setSelectedComponent] = useState()
     const [method, setMethod] = useState()
-    const [telefono, setTelefono] = useState()
     const { setLoading } = useLoading()
+    const [methods, setMethods] = useState([])
+
+    const getWithdrawalMethods = async () => {
+        const response = await request.get(apiUrl + '/tasas/methods')
+        setMethods(response.data.body)
+    }
+
+    useEffect(() => {
+        getWithdrawalMethods()
+    }, [])
 
     const selectedMethod = (e) => {
         if (e?.target?.value) {
-            const methodSelected = methodsComponents.methods.find(m => m.id === Number(e.target.value))
-            setSelectedComponent(methodSelected?.components)
-            setMethod(methodSelected)
+            const methodId = Number(e.target.value)
+            const methodSelected = methods.find(m => m.methodId.id === methodId)
+            const methodComponents = methodsComponents.methods.find(m => m.id === methodId)
+            setSelectedComponent(methodComponents?.components)
+            setMethod(methodSelected.methodId)
         } else {
             setSelectedComponent(null)
         }
     }
 
-    const components = methodsComponents.methods.map((m, i) =>
-        <option key={i} value={m.id}> {m.currencyName} ({m.abbreviation}) {m.id}</option>
-    )
+    const components = methods.length > 0 && methods.map((tasa, i) => {
+        const _method = tasa.methodId
+        return <option key={i} value={_method.id}>
+            {console.log(_method)}
+            {_method.currencyName} ({_method.abbreviation}) - Precio {tasa.buy}{_method.abbreviation} por dolar
+        </option>
+    })
 
     const sendMethodForm = async (e) => {
         e.preventDefault()
@@ -59,17 +73,33 @@ const useModalRetirar = ({ setModal }) => {
         }
     }
 
-    const handleTelefonoChange = (e) => {
-        const input = e.target.value
+    const generateInputs = () => {
+        if (!selectedComponent) return null
+        console.log(selectedComponent)
+        const inputs = selectedComponent.map(componentId => {
+            const component = methodsComponents.components.find(c => c.id === componentId)
+            if (!component) return null
 
-        if (onlyNumbersRejex.test(input)) {
-            setTelefono(input)
-        }
+            const name = methodsComponents.dictionaryComponets[componentId - 1]
+            return (
+                <div key={component.id}>
+                    <label htmlFor={name}>{component.name}</label>
+                    <input
+                        type={component.type}
+                        name={name}
+                        id={name}
+                        placeholder={component.name}
+                        className="w-full p-2 border border-gray-300 rounded-md"
+                    />
+                </div>
+            )
+        })
+        return inputs
     }
-
     return {
-        selectedComponent, setSelectedComponent, telefono, setTelefono,
-        selectedMethod, sendMethodForm, handleTelefonoChange, components, method
+        selectedComponent, setSelectedComponent,
+        selectedMethod, sendMethodForm, components, method,
+        generateInputs
     }
 }
 

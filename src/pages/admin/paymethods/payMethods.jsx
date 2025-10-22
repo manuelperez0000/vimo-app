@@ -12,7 +12,7 @@ export default function PayMethods() {
             <div className="col-12">
                 <div className="d-flex justify-content-between align-items-center mb-4">
                     <div>
-                        <h1>Métodos de Pago</h1>
+                        <h1>Métodos de Pago admin</h1>
                         <p>Aquí puedes administrar los métodos de pago.</p>
                     </div>
                     <div>

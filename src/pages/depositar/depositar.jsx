@@ -9,15 +9,17 @@ const Depositar = () => {
   const { method, result, inputRef, calcResult, getMethod, deposit, methods } = useDepositar()
   const { user } = useUserStorGlobal()
 
+  console.log(methods)
+
   return (
     <div className="container-fluid">
       <DepositModal />
       <div className="row">
         <div className="col-12 col-md-6 offset-md-3 py-4">
           <div className="text-end">
-          <button onClick={() => navigate("/mis-depositos")} className="btn btn-primary mb-3">Mis depositos</button>
+            <button onClick={() => navigate("/mis-depositos")} className="btn btn-primary mb-3">Mis depositos</button>
           </div>
-          
+
           <section>
             <div className="title-section">Depositar</div>
             <div className="flex-between mb-1">
@@ -43,7 +45,7 @@ const Depositar = () => {
                   Monto a depositar en <strong> {method?.methodId?.abbreviation} </strong>
                 </span>
                 <div className="input-group mb-3 mt-1">
-                  <input name="amount" min={0} max={1500} ref={inputRef} onChange={calcResult} type="number" className="form-control span-text" placeholder="Ingrese el monto a depositar" aria-label="" aria-describedby="basic-addon1" />
+                  <input name="amount" min={0} step={0.01} ref={inputRef} onChange={calcResult} type="number" className="form-control span-text" placeholder="Ingrese el monto a depositar" aria-label="" aria-describedby="basic-addon1" />
                   <span className="input-group-text span-text2 bg-white" id="basic-addon1"> {method?.s} </span>
                 </div>
 

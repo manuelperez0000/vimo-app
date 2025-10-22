@@ -12,7 +12,7 @@ const Metodos = () => {
                     <div className='mb-3'>
                         <div className='card px-3 py-2'>
                             <div className='flex-between'>
-                                <h3>Métodos de Pago</h3>
+                                <h3>Métodos de Pago de clientes</h3>
                                 <button onClick={() => setShowModal(true)} className="btn btn-primary">+ Agregar Método de pago</button>
                             </div>
                             <p>Aquí puedes ver los métodos de pago disponibles.</p>

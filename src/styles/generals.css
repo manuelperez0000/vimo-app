@@ -61,3 +61,38 @@ a {
 .tr-move td {
     color: rgb(110, 110, 110) !important;
 }
+
+/* Comercio Page Styles */
+.comercio-page {
+    background-color: #f8f9fa;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.comercio-page .card {
+    border: none;
+    border-radius: 0.75rem;
+}
+
+.comercio-page .card-header {
+    background-color: #e9ecef;
+    font-weight: 600;
+    border-bottom: none;
+}
+
+.comercio-page .list-group-item {
+    border-color: #e9ecef;
+}
+
+.comercio-page .copy-icon {
+    color: #6c757d;
+    transition: color 0.2s;
+}
+
+.comercio-page .copy-icon:hover {
+    color: #007bff;
+}
+
+.comercio-page .chat-input-container .form-control:focus {
+    box-shadow: none;
+}

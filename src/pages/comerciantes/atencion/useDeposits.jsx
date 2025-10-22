@@ -8,8 +8,6 @@ import { useNavigate } from "react-router-dom"
 const useDeposits = () => {
 
     const socketRef = useRef(socket);
-
-    /* const { deposits, setDeposits } = useStore(); */
     const [deposits, setDeposits] = useState([])
     const navigate = useNavigate();
 
@@ -23,7 +21,7 @@ const useDeposits = () => {
             await request.put(apiurl + `/deposit/attend/${id}`);
             fetchDeposits();
             //go to agent chat
-            navigate('/agent/chat/' + id);
+            navigate('/agent/chat/deposit/' + id);
 
         } catch (error) {
             console.error(error);

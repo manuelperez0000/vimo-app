@@ -15,6 +15,7 @@ const usePayMethods = () => {
     const getMethods = useCallback(async () => {
         try {
             const response = await request.get(`${apiUrl}/adminMethods`);
+            console.log("Fetched payment methods:", response.data.body);
             setPayMethods(response.data.body);
 
         } catch (error) {

@@ -6,6 +6,32 @@ p {
     color: var(--gray1);
 }
 
+.bg-home {
+    background: linear-gradient(rgba(4, 65, 126, 0.74), rgba(2, 35, 68, 0.836)), url('./bg2.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+}
+
+.bg-yellow {
+    background-color: rgb(255, 251, 195);
+    border: 1px solid rgb(226, 205, 15);
+    border-radius: 5px;
+}
+
+.overflow-wrap {
+    overflow-wrap: break-word;
+}
+
+.padding-nav {
+    padding-top: 100px;
+}
+
+.check {
+    font-size: 60px;
+}
+
 nav {
     background-color: var(--primary);
     display: flex;
@@ -270,7 +296,7 @@ section {
     width: 100vw;
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.8);
-    
+
     overflow: auto;
     z-index: 1000;
 }
@@ -293,10 +319,10 @@ section {
 }
 
 .left-msg {
+    background-color: white;
     padding: 3px 7px;
     border-radius: 7px;
     color: var(--gray2);
-    background-color: white;
 }
 
 .right-msg {
@@ -312,6 +338,24 @@ section {
     justify-content: end;
     margin-bottom: 10px;
 }
+.text-lg{
+    font-size: 20px;
+    color: rgb(232, 245, 234);
+    padding: 4px 10px;
+    background-color: rgba(0, 0, 0, 0.747);
+    margin: 5px 0px;
+    border-radius: 4px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.nroComprobante{
+    background-color: rgba(32, 32, 32, 0.808);
+    display: block;
+    padding: 5px 10px;
+    border-radius: 4px;
+    color: aliceblue;
+    margin-top: 20px;
+}
 
 .item-msg {
     color: var(--gray2);
@@ -324,6 +368,12 @@ section {
     bottom: 0px;
     left: 0px;
     width: 100%;
+}
+
+.chatsContainer{
+    max-height: 60vh;
+    overflow-y: auto;
+    
 }
 
 .copy {
@@ -517,7 +567,11 @@ nav {
     font-size: small;
     color: aliceblue !important;
 }
-
+.flex-end{
+    display: flex;
+    align-items: end;
+    justify-content: end;
+}
 .link-active-movil {
     font-size: 16px;
     text-decoration: none;
@@ -531,11 +585,11 @@ nav {
     z-index: 1000;
 }
 
-.p-relative{
+.p-relative {
     position: relative;
 }
 
-.text-admin-logo{
+.text-admin-logo {
     position: absolute;
     bottom: -10px;
     right: 0px;

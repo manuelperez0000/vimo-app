@@ -21,7 +21,7 @@
     },
     {
         "title": "Métodos de Pago",
-        "path": "/metodos-de-pago",
+        "path": "/payMethods",
         "icon": "bi bi-credit-card"
     },
     {

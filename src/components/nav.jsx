@@ -1,11 +1,10 @@
 import { Link, useLocation } from "react-router-dom"
 import Logo from "./logo"
 import useApp from "../globals/useApp"
-import useUserStorGlobal from "../globals/useUserStoreGlobal"
+import money from "../libs/money"
 const Nav = () => {
 
-    const { user } = useUserStorGlobal()
-    const { getSession, closeSession } = useApp()
+    const { getSession, closeSession, depositsNumber, user } = useApp()
     const location = useLocation()
 
     return (
@@ -34,19 +33,20 @@ const Nav = () => {
                         Métodos de Pago
                     </Link>
 
-                    {/* Atencion al cliente */}
-                    {user?.user?.level == 1 || user?.user?.level == 2 ?
-                        <Link to='/atencion' className={location.pathname === '/atencion' ? "link-active bg-success" : "bg-success link"}>
-                            <i className="bi bi-shop mx-1" />
-                            Atencion
-                        </Link> : null}
+                    
                 </div>
             </div>
             <div className="r-btns">
+
+                <div className="text-light px-2 rounded border border-light">
+                    ${money(user.user.balance)}
+                </div>
+
                 <button className="bell">
                     <i className="bi bi-bell text-light" />
-                    <div className="notifications"> 5 </div>
+                    {depositsNumber > 0 && <div className="notifications"> {depositsNumber}</div>}
                 </button>
+
 
                 {getSession ? <>
                     <button onClick={closeSession} className="btn btn-primary">
@@ -96,17 +96,7 @@ const Nav = () => {
                             </div>
                         </Link>
                     </div>
-                    {/* Atencion al cliente */}
-                    {user?.user?.level == + 1 || user?.user?.level == 2 ?
-                        <div className="linkMovil bg-success">
-                            <Link to='/atencion' className={location.pathname === '/atencion' ? "link-active-movil" : "link-movil"}>
-                                <div className="btn-menu-movil">
-                                    <i className="bi bi-credit-card mx-1" />
-                                    <div>Atencion</div>
-                                </div>
-                            </Link>
-                        </div>
-                        : null}
+                    
                 </div>
             </div>
         </nav>

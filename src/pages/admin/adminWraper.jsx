@@ -2,9 +2,12 @@
 import nav from './nav.json'
 import { Link } from "react-router-dom"
 import Logo from "../../components/logo"
-
+import money from '../../libs/money'
+import useApp from '../../globals/useApp'
 // eslint-disable-next-line react/prop-types
 const AdminWraper = ({ children }) => {
+
+    const { user } = useApp()
     return (
         <div className="admin-wraper">
             <nav className="px-5 flex-between bg-dark">
@@ -19,6 +22,17 @@ const AdminWraper = ({ children }) => {
                             <i className={n.icon + " mx-1"} />
                             {n.title}
                         </Link>)}
+
+                        {/* Atencion al cliente */}
+                        {user?.user?.level == 1 || user?.user?.level == 2 ?
+                            <Link to='/atencion' className={location.pathname === '/atencion' ? "link-active bg-success" : "bg-success link"}>
+                                <i className="bi bi-shop mx-1" />
+                                Atencion
+                            </Link> : null}
+
+                        <div className="text-light px-2 rounded border border-light">
+                            ${money(user?.user?.balance)}
+                        </div>
 
                         {/* Atencion al cliente */}
                         {/* {user?.user?.level == 1 || user?.user?.level == 2 ?

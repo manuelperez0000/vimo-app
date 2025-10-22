@@ -2,7 +2,7 @@ import { Link } from "react-router-dom"
 import LogoSVG from '../assets/logo-pagos-ya.png'
 const Home = () => {
     return (
-        <div className="bg-blue mh-100 p-2 w-100 flex-center">
+        <div className="bg-home mh-100 p-2 w-100 flex-center">
             <div className="container-fluid">
                 <div className="row">
                     <div className="col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4 mt-5 text-center">
