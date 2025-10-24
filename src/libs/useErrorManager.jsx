@@ -1,7 +1,7 @@
 import useNotify from "./notify/notify"
 
 const useErrorManager = () => {
-    const { notify } = useNotify()
+    const { notify, nonError = "Ocurrio un error desconocido" } = useNotify()
     return (error) => {
         if (error?.response?.data?.message) {
             notify.error(error?.response?.data?.message)
@@ -9,7 +9,7 @@ const useErrorManager = () => {
             notify.error(error.message)
         } else {
             console.error(error)
-            notify.error("Ocurrio un error desconocido")
+            notify.error(nonError)
         }
     }
 }

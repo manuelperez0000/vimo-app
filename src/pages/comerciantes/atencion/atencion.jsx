@@ -3,6 +3,7 @@ import useDeposits from "./useDeposits";
 import useWithdrawals from "./useWithdrawals";
 import useApp from "../../../globals/useApp";
 import money from '../../../libs/money'
+
 const Atencion = () => {
     const { user } = useApp();
     const { deposits, handleAtender: handleAtenderDeposit } = useDeposits();

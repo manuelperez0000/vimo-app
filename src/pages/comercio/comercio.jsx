@@ -32,7 +32,7 @@ const Comercio = () => {
     }, [chats]);
 
     return (
-        <div className="container-fluid mt-4 comercio-page mb-5">
+        <div className="container-fluid comercio-page">
             <div className="row">
                 <div className="col-6">
                     <div className="card shadow-sm">
@@ -50,7 +50,7 @@ const Comercio = () => {
                                             {deposit.status == 'finished' ? <>
                                                 <div className="alert alert-success">
                                                     <div><i className="text-success check bi bi-check-circle-fill"></i></div>
-                                                    <p className="lead my-0 text-success">Operacion finalizada con exito!</p>
+                                                    <p className="lead my-0 text-success">Operacion finalizada con exito! 2</p>
                                                     <strong className="text-success">Número de Operación: {deposit.operationNumber}</strong>
                                                 </div>
                                             </> : <>
@@ -121,8 +121,7 @@ const Comercio = () => {
                     <div className="chat-input-container">
                         <div className="row justify-content-center">
                             <div className="col-12">
-
-                                <div className="card card-header chatsContainer" ref={chatRef}>
+                                <div className="card chatsContainer" ref={chatRef}>
                                     {chats?.map((item, i) => {
                                         return <div key={i} className={messageOwner(item, user?.user?._id) ? "left-msg-w" : "right-msg-w"}>
                                             <div className={messageOwner(item, user?.user?._id) ? "left-msg" : "right-msg"}>
@@ -134,8 +133,7 @@ const Comercio = () => {
                                         </div>
                                     })}
                                 </div>
-
-                                <div className="card shadow-sm mt-3">
+                                <div className="card bg-dark-2 shadow-sm mt-3">
                                     <div className="card-body p-2">
                                         <form onSubmit={(e) => sendMessage(e)}>
                                             <div className="d-flex align-items-center">
@@ -146,10 +144,11 @@ const Comercio = () => {
                                                     name="comercio"
                                                     className="form-control border-0"
                                                     autoFocus
+                                                    disabled={!deposit?.agent}
                                                 />
                                                 <div className="chat-icons ms-2 d-flex gap-2">
                                                     {/*  <i className="bi bi-paperclip fs-4" /> */}
-                                                    <button className="border-0 bg-transparent"> <i className="bi bi-arrow-up-circle-fill fs-3 text-primary" /></button>
+                                                    <button disabled={!deposit?.agent} className="border-0 bg-transparent"> <i className="bi bi-arrow-up-circle-fill fs-3 text-primary" /></button>
                                                 </div>
                                             </div>
                                         </form>

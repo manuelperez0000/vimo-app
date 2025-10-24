@@ -89,11 +89,11 @@
         
     ],
     "dictionaryComponets": [
-        "numero-de-telefono",
-        "numero-de-cuenta",
-        "cedula-de-identidad",
-        "tipo-de-cuenta",
-        "nombre-del-titular",
+        "numero_de_telefono",
+        "numero_de_cuenta",
+        "cedula_de_identidad",
+        "tipo_de_cuenta",
+        "nombre_del_titular",
         "banco",
         "email"
     ]

@@ -1,11 +1,12 @@
 import PropTypes from "prop-types"
 import Modal from "../../components/modals/Modal"
 import useModalRetirar from "./useModalRetirar"
+import methodsComponents from '../../store/methodsComponents.json'
 
 const ModalRetirar = ({ setModal, modal }) => {
 
     const { components, selectedMethod,
-        sendMethodForm, method, generateInputs } = useModalRetirar({ setModal })
+        sendMethodForm, selectedComponent, method } = useModalRetirar({ setModal })
 
     return (
         <Modal show={modal}>
@@ -27,13 +28,39 @@ const ModalRetirar = ({ setModal, modal }) => {
                 <input type="hidden" name="currencyName" value={method?.currencyName} />
                 <input type="hidden" name="abbreviation" value={method?.abbreviation} />
                 <input type="hidden" name="currencyType" value={method?.type} />
-aqui los inputs
-                {/* generateInputs() */}
+
+
+
+                
+
+                {selectedComponent && (
+                    <div>
+                        {selectedComponent.map(componentId => {
+                            const component = methodsComponents.components.find(c => c.id === componentId)
+                            if (!component) return null
+
+                            const name = methodsComponents.dictionaryComponets[componentId - 1]
+                            return (
+                                <div key={component.id}>
+                                    <label htmlFor={name}>{component.name}</label>
+                                    <input
+                                        type={component.type}
+                                        name={name}
+                                        id={name}
+                                        placeholder={component.name}
+                                        className="w-full p-2 border border-gray-300 rounded-md"
+                                    />
+                                </div>
+                            )
+                        })}
+                    </div>
+                )}
 
                 <div className="text-end">
                     <button className="btn btn-primary"> Agregar este metodo </button>
                 </div>
             </form>
+
             <button onClick={() => setModal(false)}> cerrar </button>
         </Modal>
     )

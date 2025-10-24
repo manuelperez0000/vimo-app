@@ -4,8 +4,12 @@ import { Link } from "react-router-dom"
 import Logo from "../../components/logo"
 import money from '../../libs/money'
 import useApp from '../../globals/useApp'
+import useDepositsStore from '../comerciantes/atencion/useDepositsStore';
+
 // eslint-disable-next-line react/prop-types
 const AdminWraper = ({ children }) => {
+
+    const { deposits } = useDepositsStore();
 
     const { user } = useApp()
     return (
@@ -25,21 +29,15 @@ const AdminWraper = ({ children }) => {
 
                         {/* Atencion al cliente */}
                         {user?.user?.level == 1 || user?.user?.level == 2 ?
-                            <Link to='/atencion' className={location.pathname === '/atencion' ? "link-active bg-success" : "bg-success link"}>
+                            <Link to='/atencion' className={location.pathname === '/atencion' ? "link-active bg-success relative px-4" : "px-4 relative bg-success link"}>
                                 <i className="bi bi-shop mx-1" />
                                 Atencion
+                                {deposits?.length > 0 && <div className='punto-rojo' />}
                             </Link> : null}
 
-                        <div className="text-light px-2 rounded border border-light">
+                        <div className="text-light flex-center px-2 rounded border border-light">
                             ${money(user?.user?.balance)}
                         </div>
-
-                        {/* Atencion al cliente */}
-                        {/* {user?.user?.level == 1 || user?.user?.level == 2 ?
-                            <Link to='/atencion' className={location.pathname === '/atencion' ? "link-active bg-success" : "bg-success link"}>
-                                <i className="bi bi-shop mx-1" />
-                                Atencion
-                            </Link> : null} */}
                     </div>
                 </div>
                 <div className="r-btns">

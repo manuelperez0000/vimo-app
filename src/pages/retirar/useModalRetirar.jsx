@@ -5,8 +5,10 @@ import request from "../../libs/request"
 import useLoading from "../../components/loader/useLoading.jsx"
 import useNotify from "../../libs/notify/notify.jsx"
 import useRetirar from "./useRetirar.jsx"
-const useModalRetirar = ({ setModal }) => {
+import useErrorManager from "../../libs/useErrorManager.jsx"
 
+const useModalRetirar = ({ setModal }) => {
+    const handleError = useErrorManager()
     const { notify } = useNotify()
     const { getUserMethods } = useRetirar()
     const [selectedComponent, setSelectedComponent] = useState()
@@ -26,10 +28,15 @@ const useModalRetirar = ({ setModal }) => {
     const selectedMethod = (e) => {
         if (e?.target?.value) {
             const methodId = Number(e.target.value)
-            const methodSelected = methods.find(m => m.methodId.id === methodId)
+
+            console.log(methodId)
+
+            const methodSelected = methods.find(m => m.methodId.methodId === methodId)
             const methodComponents = methodsComponents.methods.find(m => m.id === methodId)
             setSelectedComponent(methodComponents?.components)
-            setMethod(methodSelected.methodId)
+            console.log("components seleccionados ", methodComponents?.components)
+            setMethod(methodSelected?.methodId)
+
         } else {
             setSelectedComponent(null)
         }
@@ -37,28 +44,41 @@ const useModalRetirar = ({ setModal }) => {
 
     const components = methods.length > 0 && methods.map((tasa, i) => {
         const _method = tasa.methodId
-        return <option key={i} value={_method.id}>
-            {console.log(_method)}
-            {_method.currencyName} ({_method.abbreviation}) - Precio {tasa.buy}{_method.abbreviation} por dolar
+        return <option key={i} value={_method?.methodId}>
+            {_method?.currencyName} ({_method?.abbreviation}) - Precio {tasa.buy}{_method?.abbreviation} por dolar
         </option>
     })
 
     const sendMethodForm = async (e) => {
         e.preventDefault()
+
+
+        console.log("Metodo a enviar:", method)
+
+        const data = {
+            methodId: {
+                methodId: method?.methodId,
+                currencyName: method?.currencyName || null,
+                currencyType: method?.currencyType || null,
+                abbreviation: method?.abbreviation || null
+
+            },
+            _id: method?._id,
+            email: e.target.email?.value || null,
+            phone: e.target.numero_de_telefono?.value || null,
+            accountNumber: e.target.numero_de_cuenta?.value || null,
+            accountType: e.target.tipo_de_cuenta?.value || null,
+            bankName: e.target.banco?.value || null,
+            walletAddress: e.target.walletAddress?.value || null,
+            document: e.target.cedula_de_identidad?.value || null,
+            userName: e.target.nombre_del_titular?.value || null
+        }
+
+        console.log("Data a enviar:", data)
+        const url = apiUrl + '/paymentMethods'
         setModal(false)
         setLoading(true)
-        const formData = new FormData(e.target)
-        const data = Object.fromEntries(formData)
-        /* console.log("  data ", data)
-        setLoading(false)
-        return */
-        data.metodo = Number(data.metodo)
-        data.exchangeRateToUSD = 0
-        data.buyPrice = 0
-        data.sellPrice = 0
-        //enviar la informacion la backend usando axios
-        const url = apiUrl + '/paymentMethods'
-        console.log("data:", data)
+
         try {
             const response = await request.post(url, data)
 
@@ -67,7 +87,7 @@ const useModalRetirar = ({ setModal }) => {
 
         } catch (error) {
             console.log(error)
-            notify.error('Error al agregar el metodo de retiro')
+            handleError(error, 'Error al intentar guardar el metodo de pago')
         } finally {
             setLoading(false)
         }

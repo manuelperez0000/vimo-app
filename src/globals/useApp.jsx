@@ -56,7 +56,7 @@ const useApp = () => {
                 }
             }
             socket.on("userData", handleUpdate);
-            return () => socket.off("userData", handleUpdate);
+            //return () => socket.off("userData", handleUpdate);
         }
     }, [user])
 
