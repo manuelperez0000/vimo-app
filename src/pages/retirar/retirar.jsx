@@ -1,25 +1,30 @@
 import { useNavigate } from "react-router-dom";
 import ModalRetirar from "./modalRetirar";
+import ModalManageMethods from "./ModalManageMethods";
 import useRetirar from "./useRetirar";
 import useUserStorGlobal from "../../globals/useUserStoreGlobal";
-import './retirar.css';
 import traslate from '../../store/traslateLib.json'
 import money from '../../libs/money'
 import ModalSuccess from "./modalSuccess";
 
 const Retirar = () => {
+
   const navigate = useNavigate();
   const { user } = useUserStorGlobal();
-  const { amount, modalSuccess, setModalSuccess, sendWhithdraw, modal, setModal, userMethods, handleNumberInput, handleKeyDown, total, method, getMethod } = useRetirar();
+  const { amount, modalSuccess, setModalSuccess, sendWhithdraw, modal, setModal, userMethods, handleNumberInput, handleKeyDown, total, method, getMethod,setModalManage } = useRetirar();
 
   return (
     <div className="container vh-100 pt-5">
+
       <ModalSuccess modalSuccess={modalSuccess} setModalSuccess={setModalSuccess} />
       <ModalRetirar setModal={setModal} modal={modal} />
+      <ModalManageMethods />
+
       <div className="row mb-3">
         <div className="col-12 col-md-8 col-lg-6 offset-md-2 offset-lg-3">
           <div className="flex-end gap-2 mt-3">
             <button className="btn btn-primary btn-sm" onClick={() => setModal(true)}>+ Agregar nuevo método de retiro</button>
+            <button className="btn btn-info btn-sm" onClick={() => setModalManage(true)}>Gestionar métodos de retiro</button>
             <button className="btn btn-secondary btn-sm" onClick={() => navigate('/mis-retiros')}>Ver mis retiros</button>
           </div>
         </div>
@@ -41,7 +46,7 @@ const Retirar = () => {
                   <select id="withdraw-method" onChange={(e) => getMethod(e.target.value)} className="form-select form-select-lg mb-4">
                     <option value={0}>Seleccione un método</option>
                     {userMethods.map((m, i) => (
-                      <option key={i} value={JSON.stringify(m)}>{m.currencyName} ({m.abbreviation})</option>
+                      <option key={i} value={JSON.stringify(m)}>{m?.currencyName} ({m?.abbreviation})</option>
                     ))}
                   </select>
                 </>

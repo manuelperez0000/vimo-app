@@ -1,8 +1,8 @@
 import { useEffect } from "react"
-import Logo from "../../../components/logo.jsx"
+import Logo from "../../../../components/logo.jsx"
 import useConfirmStore from "../useConfirmStore"
 import useEnviar from "../useEnviar"
-import useUserStorGlobal from "../../../globals/useUserStoreGlobal"
+import useUserStorGlobal from "../../../../globals/useUserStoreGlobal"
 
 const ConfirmModal = () => {
 

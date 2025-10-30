@@ -1,5 +1,5 @@
 import useEnviar from "./useEnviar"
-import money from "../../libs/money"
+import money from "../../../libs/money"
 import ModalEnviar from "./modals/modalEnviar"
 import ConfirmModal from "./modals/confirmModal"
 import SuccessModal from "./modals/successModal"

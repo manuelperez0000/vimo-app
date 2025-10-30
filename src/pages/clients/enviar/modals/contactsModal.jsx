@@ -1,4 +1,4 @@
-import useUserStorGlobal from "../../../globals/useUserStoreGlobal"
+import useUserStorGlobal from "../../../../globals/useUserStoreGlobal"
 import useContactsStore from "../useContactsStore"
 
 const ContactsModal = ({ setUrlParam }) => {

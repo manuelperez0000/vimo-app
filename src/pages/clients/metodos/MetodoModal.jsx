@@ -1,6 +1,6 @@
 import useMetodo from './useMetodo';
-import methodsComponents from '../../store/methodsComponents.json'
-import bancos from '../../store/bancos.json'
+import methodsComponents from '../../../store/methodsComponents.json'
+import bancos from '../../../store/bancos.json'
 
 const MetodoModal = () => {
 
@@ -8,7 +8,7 @@ const MetodoModal = () => {
 
     if (showModal) return (
         <div className='bg-modal'>
-            <div className="p-4 modal-body">
+            <div className="p-4 body-modal">
                 <h2 className="mb-4">Agregar Nuevo Método de Pago</h2>
                 <button onClick={() => setShowModal(false)}> cerrar </button>
                 <form onSubmit={handleSubmit}>
@@ -19,7 +19,7 @@ const MetodoModal = () => {
                             {methods?.length > 0 && methods.map((method_tasa, i) => {
                                 const _method = method_tasa.methodId
                                 return <option key={i} value={JSON.stringify(method_tasa)}>
-                                    {_method.currencyName} ({_method.abbreviation})
+                                    {_method?.currencyName} ({_method?.abbreviation})
                                 </option>
                             })}
                         </select>

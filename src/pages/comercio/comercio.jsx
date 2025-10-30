@@ -34,7 +34,7 @@ const Comercio = () => {
     return (
         <div className="container-fluid comercio-page">
             <div className="row">
-                <div className="col-6">
+                <div className={deposit?.agent ? "col-6" : "col-12"}>
                     <div className="card shadow-sm">
                         <div className="card-body p-4">
                             {deposit?.agent ? (
@@ -117,47 +117,49 @@ const Comercio = () => {
                         </div>
                     </div>
                 </div>
-                <div className="col-6">
-                    <div className="chat-input-container">
-                        <div className="row justify-content-center">
-                            <div className="col-12">
-                                <div className="card chatsContainer" ref={chatRef}>
-                                    {chats?.map((item, i) => {
-                                        return <div key={i} className={messageOwner(item, user?.user?._id) ? "left-msg-w" : "right-msg-w"}>
-                                            <div className={messageOwner(item, user?.user?._id) ? "left-msg" : "right-msg"}>
-                                                <p className="item-msg" style={{ whiteSpace: "pre-line" }}>
-                                                    {item.message}
-                                                </p>
-                                                <div className="hora-msg">{hour(item.createdAt)}</div>
-                                            </div>
-                                        </div>
-                                    })}
-                                </div>
-                                <div className="card bg-dark-2 shadow-sm mt-3">
-                                    <div className="card-body p-2">
-                                        <form onSubmit={(e) => sendMessage(e)}>
-                                            <div className="d-flex align-items-center">
-                                                <input onChange={(e) => setTextChat(e.target.value)}
-                                                    value={textChat}
-                                                    type="text"
-                                                    placeholder="Enviar un mensaje al comerciante..."
-                                                    name="comercio"
-                                                    className="form-control border-0"
-                                                    autoFocus
-                                                    disabled={!deposit?.agent}
-                                                />
-                                                <div className="chat-icons ms-2 d-flex gap-2">
-                                                    {/*  <i className="bi bi-paperclip fs-4" /> */}
-                                                    <button disabled={!deposit?.agent} className="border-0 bg-transparent"> <i className="bi bi-arrow-up-circle-fill fs-3 text-primary" /></button>
+                {deposit?.agent &&
+                    <div className="col-6">
+                        <div className="chat-input-container">
+                            <div className="row justify-content-center">
+                                <div className="col-12">
+                                    <div className="card chatsContainer " ref={chatRef}>
+                                        {chats?.map((item, i) => {
+                                            return <div key={i} className={messageOwner(item, user?.user?._id) ? "left-msg-w" : "right-msg-w"}>
+                                                <div className={messageOwner(item, user?.user?._id) ? "left-msg" : "right-msg"}>
+                                                    <p className="item-msg" style={{ whiteSpace: "pre-line" }}>
+                                                        {item.message}
+                                                    </p>
+                                                    <div className="hora-msg">{hour(item.createdAt)}</div>
                                                 </div>
                                             </div>
-                                        </form>
+                                        })}
                                     </div>
+                                    <div className="card bg-dark-2 shadow-sm mt-3">
+                                        <div className="card-body p-2">
+                                            <form onSubmit={(e) => sendMessage(e)}>
+                                                <div className="d-flex align-items-center">
+                                                    <input onChange={(e) => setTextChat(e.target.value)}
+                                                        value={textChat}
+                                                        type="text"
+                                                        placeholder="Enviar un mensaje al comerciante..."
+                                                        name="comercio"
+                                                        className="form-control border-0"
+                                                        autoFocus
+                                                        disabled={!deposit?.agent}
+                                                    />
+                                                    <div className="chat-icons ms-2 d-flex gap-2">
+                                                        {/*  <i className="bi bi-paperclip fs-4" /> */}
+                                                        <button disabled={!deposit?.agent} className="border-0 bg-transparent"> <i className="bi bi-arrow-up-circle-fill fs-3 text-primary" /></button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
+                    </div>}
             </div>
 
             <Modal show={showModal}>

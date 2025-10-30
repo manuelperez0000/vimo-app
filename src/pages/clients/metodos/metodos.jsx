@@ -1,6 +1,6 @@
 import MetodoModal from './MetodoModal';
 import useMetodo from './useMetodo';
-import bancos from '../../store/bancos.json'
+import bancos from '../../../store/bancos.json'
 const Metodos = () => {
     const { setShowModal, userMethods, deleteMethod } = useMetodo();
 

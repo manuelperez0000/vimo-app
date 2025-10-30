@@ -8,7 +8,7 @@ import useRetirar from "./useRetirar.jsx"
 import useErrorManager from "../../libs/useErrorManager.jsx"
 import useApp from "../../globals/useApp.jsx"
 
-const useModalRetirar = ({ setModal, modal }) => {
+const useModalManageMethods = ({ setModal, editableMethod, setEditableMethod }) => {
     const { getUserMethods } = useRetirar()
     const handleError = useErrorManager()
     const { notify } = useNotify()
@@ -17,13 +17,7 @@ const useModalRetirar = ({ setModal, modal }) => {
     const { setLoading } = useLoading()
     const { initApp } = useApp()
     const [methods, setMethods] = useState([])
-
-    useEffect(() => {
-        if (modal) {
-            setSelectedComponent(null)
-            setMethod(null)
-        }
-    }, [modal])
+    const [formValues, setFormValues] = useState({})
 
     const getWithdrawalMethods = async () => {
         const response = await request.get(apiUrl + '/tasas/methods')
@@ -34,18 +28,40 @@ const useModalRetirar = ({ setModal, modal }) => {
         getWithdrawalMethods()
     }, [])
 
+    useEffect(() => {
+        if (editableMethod) {
+            // Pre-fill for editing
+            const methodId = editableMethod.methodId
+            const typeMethod = methods.find(m => m.methodId.methodId === methodId)
+            const meth = methodsComponents.methods.find(m => m.id === methodId)
+            setSelectedComponent(meth?.components)
+            setMethod(typeMethod?.methodId)
+
+            // Populate form values
+            setFormValues({
+                email: editableMethod.email || '',
+                numero_de_telefono: editableMethod.phone || '',
+                numero_de_cuenta: editableMethod.accountNumber || '',
+                tipo_de_cuenta: editableMethod.accountType || '',
+                banco: editableMethod.bank || '',
+                walletAddress: editableMethod.walletAddress || '',
+                cedula_de_identidad: editableMethod.document || '',
+                nombre_del_titular: editableMethod.userName || ''
+            })
+        } else {
+            setFormValues({})
+        }
+    }, [editableMethod, methods])
+
     const selectedMethod = (e) => {
         if (e?.target?.value) {
             const methodId = Number(e.target.value)
-            console.log(methodId)
             const methodSelected = methods.find(m => m.methodId.methodId === methodId)
             const methodComponents = methodsComponents.methods.find(m => m.id === methodId)
             setSelectedComponent(methodComponents?.components)
-            console.log("components seleccionados ", methodComponents?.components)
             setMethod(methodSelected?.methodId)
         } else {
             setSelectedComponent(null)
-            setMethod(null)
         }
     }
 
@@ -56,7 +72,7 @@ const useModalRetirar = ({ setModal, modal }) => {
         </option>
     })
 
-    const sendMethodForm = async (e) => {
+    const sendMethodUpdateForm = async (e) => {
         e.preventDefault()
         const data = {
             methodId: {
@@ -64,7 +80,6 @@ const useModalRetirar = ({ setModal, modal }) => {
                 currencyName: method?.currencyName || null,
                 currencyType: method?.currencyType || null,
                 abbreviation: method?.abbreviation || null
-
             },
             _id: method?._id,
             email: e.target.email?.value || null,
@@ -77,25 +92,37 @@ const useModalRetirar = ({ setModal, modal }) => {
             userName: e.target.nombre_del_titular?.value || null
         }
 
-        console.log("Data a enviar:", data)
-        const url = apiUrl + '/paymentMethods'
+        const url = apiUrl + '/paymentMethods/' + editableMethod._id
         setModal(false)
+        setEditableMethod(null)
         setLoading(true)
 
         try {
-            const response = await request.post(url, data)
-
-            if (response.data) notify.success('Metodo de retiro agregado con exito')
-            console.log("Respuesta al guardar el metodo de pago:", response.data)
+            const response = await request.put(url, data)
+            if (response.data) notify.success('Metodo de retiro actualizado con exito')
             await initApp()
-            const withdrawalMethods = await getUserMethods()
-            console.log("Metodos de retiro actualizados", withdrawalMethods)
-
+            /* await getUserMethods() */
         } catch (error) {
             console.log(error)
-            handleError(error, 'Error al intentar guardar el metodo de pago')
+            handleError(error, 'Error al intentar actualizar el metodo de pago')
         } finally {
-            //actualizar los methods del usuario
+            setLoading(false)
+        }
+    }
+
+    const deleteMethod = async (methodId) => {
+        if (!confirm('¿Estas seguro de eliminar este metodo de pago?')) return
+
+        setLoading(true)
+        const url = apiUrl + '/paymentMethods/' + methodId
+        try {
+            await request.delete(url)
+            notify.success('Metodo de retiro eliminado con exito')
+            await initApp()
+           /*  await getUserMethods() */
+        } catch (error) {
+            handleError(error, 'Error al eliminar el metodo de pago')
+        } finally {
             setLoading(false)
         }
     }
@@ -108,6 +135,7 @@ const useModalRetirar = ({ setModal, modal }) => {
             if (!component) return null
 
             const name = methodsComponents.dictionaryComponets[componentId - 1]
+            let defaultValue = editableMethod ? editableMethod[name] : ''
             return (
                 <div key={component.id}>
                     <label htmlFor={name}>{component.name}</label>
@@ -117,6 +145,7 @@ const useModalRetirar = ({ setModal, modal }) => {
                         id={name}
                         placeholder={component.name}
                         className="w-full p-2 border border-gray-300 rounded-md"
+                        defaultValue={defaultValue}
                     />
                 </div>
             )
@@ -126,9 +155,9 @@ const useModalRetirar = ({ setModal, modal }) => {
 
     return {
         selectedComponent, setSelectedComponent,
-        selectedMethod, sendMethodForm, components, method,
-        generateInputs
+        selectedMethod, sendMethodUpdateForm, components, method,
+        generateInputs, deleteMethod, formValues, setFormValues
     }
 }
 
-export default useModalRetirar
+export default useModalManageMethods

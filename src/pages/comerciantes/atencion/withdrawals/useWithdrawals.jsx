@@ -1,10 +1,10 @@
 //custom hook withdrawals
 import { useEffect, useRef, useState } from 'react';
-import socket from '../../../libs/socket';
-import request from '../../../libs/request'
-import apiurl from '../../../utils/urlApi';
+import socket from '../../../../libs/socket';
+import request from '../../../../libs/request'
+import apiurl from '../../../../utils/urlApi';
 import { useNavigate } from "react-router-dom"
-import useErrorManager from '../../../libs/useErrorManager'
+import useErrorManager from '../../../../libs/useErrorManager'
 const useWithdrawals = () => {
 
     const errorManager = useErrorManager()
@@ -14,7 +14,7 @@ const useWithdrawals = () => {
     const navigate = useNavigate();
 
     const fetchWithdrawals = async () => {
-        const resultWithdrawals = await request.get(apiurl + '/withdrawal/pending')
+        const resultWithdrawals = await request.get(apiurl + '/withdrawals')
         setWithdrawals(resultWithdrawals.data.body);
     };
 

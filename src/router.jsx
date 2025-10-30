@@ -3,9 +3,9 @@ import Login from "./pages/auth/login"
 import Registro from "./pages/auth/registro"
 import Recuperacion from "./pages/auth/recuperacion"
 import Home from "./pages/home"
-import Enviar from "./pages/enviar/enviar"
+import Enviar from "./pages/clients/enviar/enviar"
 import Depositar from "./pages/depositar/depositar"
-import Movimientos from "./pages/transactions/transactions.jsx"
+import Movimientos from "./pages/clients/transactions/transactions.jsx"
 import Retirar from "./pages/retirar/retirar"
 import Dashboard from "./pages/dashboard/dashboard.jsx"
 import Wraper from "./components/wraper"
@@ -22,7 +22,7 @@ import Depositos from "./pages/admin/Depositos.jsx"
 import Retiros from "./pages/admin/Retiros.jsx"
 import PayMethods from './pages/admin/paymethods/payMethods.jsx'
 import AgentChat from "./pages/admin/agentChat/agentChat.jsx"
-import Metodos from "./pages/metodos/metodos.jsx"
+import Metodos from "./pages/clients/metodos/metodos.jsx"
 /* import LandingPage from "./pages/landing.jsx" */
 
 const Router = () => {

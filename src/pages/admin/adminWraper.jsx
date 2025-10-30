@@ -4,13 +4,11 @@ import { Link } from "react-router-dom"
 import Logo from "../../components/logo"
 import money from '../../libs/money'
 import useApp from '../../globals/useApp'
-import useDepositsStore from '../comerciantes/atencion/useDepositsStore';
-
+import useDepositsWithdrawalsStore from '../comerciantes/atencion/store.js';
 // eslint-disable-next-line react/prop-types
 const AdminWraper = ({ children }) => {
 
-    const { deposits } = useDepositsStore();
-
+    const { deposits } = useDepositsWithdrawalsStore();
     const { user } = useApp()
     return (
         <div className="admin-wraper">
@@ -32,7 +30,7 @@ const AdminWraper = ({ children }) => {
                             <Link to='/atencion' className={location.pathname === '/atencion' ? "link-active bg-success relative px-4" : "px-4 relative bg-success link"}>
                                 <i className="bi bi-shop mx-1" />
                                 Atencion
-                                {deposits?.length > 0 && <div className='punto-rojo' />}
+                                {deposits && deposits?.length > 0 && <div className='punto-rojo' />}
                             </Link> : null}
 
                         <div className="text-light flex-center px-2 rounded border border-light">

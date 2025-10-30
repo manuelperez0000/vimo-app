@@ -2,31 +2,37 @@
     {
         "title": "Depositos",
         "path": "/depositos",
-        "icon": "bi bi-cash-stack"
+        "icon": "bi bi-cash-stack",
+        "rol":[1]
     },
     {
         "title": "Retiros",
         "path": "/retiros",
-        "icon": "bi bi-arrow-down-circle"
+        "icon": "bi bi-arrow-down-circle",
+        "rol":[1]
     },
     {
         "title": "Transacciones",
         "path": "/transacciones",
-        "icon": "bi bi-receipt"
+        "icon": "bi bi-receipt",
+        "rol":[1]
     },
     {
         "title": "Usuarios",
         "path": "/usuarios",
-        "icon": "bi bi-people"
+        "icon": "bi bi-people",
+        "rol":[1]
     },
     {
         "title": "Métodos de Pago",
         "path": "/payMethods",
-        "icon": "bi bi-credit-card"
+        "icon": "bi bi-credit-card",
+        "rol":[1]
     },
     {
         "title": "Tasas",
         "path": "/tasas",
-        "icon": "bi bi-bar-chart"
+        "icon": "bi bi-bar-chart",
+        "rol":[1]
     }
 ]

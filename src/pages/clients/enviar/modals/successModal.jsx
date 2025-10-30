@@ -1,5 +1,5 @@
 import useEnviarStore from "../useEnviarStore"
-import Logo from "../../../components/logo"
+import Logo from "../../../../components/logo"
 
 const SuccessModal = () => {
     const { successModal, successData } = useEnviarStore()

@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
-import useDepositar from '../depositar/useDepositar';
+import useDepositar from '../../depositar/useDepositar';
 import useMetodoStore from './useMetodosStore';
-import methodsComponents from '../../store/methodsComponents.json'
-import request from '../../libs/request';
-import urlApi from '../../utils/urlApi';
-import useLoading from '../../components/loader/useLoading'
-import useUserStoreGlobal from '../../globals/useUserStoreGlobal'
+import methodsComponents from '../../../store/methodsComponents.json'
+import request from '../../../libs/request';
+import urlApi from '../../../utils/urlApi';
+import useLoading from '../../../components/loader/useLoading'
+import useUserStoreGlobal from '../../../globals/useUserStoreGlobal'
 
 const useMetodo = () => {
 

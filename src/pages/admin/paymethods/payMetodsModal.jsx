@@ -5,7 +5,7 @@ const PayMethodsModal = () => {
     const { modal, setModal, selectedMethod, setSelectedMethod, saveMethod, getMethod, methods } = usePayMethods();
 
     if (modal) return (<div className="bg-modal">
-        <div className="modal-body">
+        <div className="body-modal">
 
             <div className="modal-header d-flex justify-content-between align-items-center">
                 <h5 className="modal-title">Agregar Método de Pago</h5>

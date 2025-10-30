@@ -19,15 +19,15 @@ const MisRetiros = () => {
                     <div className="flex-between">
                       <div>
                         <span>
-                          <strong>Cliente:</strong> {withdrawal.userFrom.name}{" "}
+                          <strong>Cliente:</strong> {withdrawal?.userFrom?.name}{" "}
                         </span>
                         <div>
-                          <strong>Monto:</strong> {withdrawal.amount}{" "}
-                          {withdrawal.method.abbreviation}
+                          <strong>Monto:</strong> {withdrawal?.amount}{" "}
+                          {withdrawal?.method?.abbreviation}
                         </div>
                         <div>
                           <strong>Metodo:</strong>{" "}
-                          {withdrawal.method.currencyName}
+                          {withdrawal?.method?.currencyName}
                         </div>
                         <div>
                           <strong>Status:</strong>
@@ -49,12 +49,12 @@ const MisRetiros = () => {
                         </div>
                       </div>
                       <div className="d-flex gap-3">
-                        <button
+                        {/* <button
                           onClick={() => navigate("/comercio/" + withdrawal._id)}
                           className="btn btn-success"
                         >
                           Ir
-                        </button>
+                        </button> */}
                       </div>
                     </div>
                   </div>

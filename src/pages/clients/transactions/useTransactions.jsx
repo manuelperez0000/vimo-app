@@ -1,7 +1,7 @@
 import { useEffect } from "react"
 import useTransactionsStore from "./useTransactionStore"
-import apiUrl from "../../libs/apiurl"
-import request from "../../libs/request"
+import apiUrl from "../../../libs/apiurl"
+import request from "../../../libs/request"
 const useTransactions = () => {
     const { transactions, setTransactions } = useTransactionsStore()
 

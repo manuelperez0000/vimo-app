@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 const Modal = ({ children, show }) => {
     if (show) return (
         <div className="bg-modal">
-            <div className="modal-body">
+            <div className="body-modal">
                 {children}
             </div>
         </div>

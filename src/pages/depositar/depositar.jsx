@@ -32,9 +32,9 @@ const Depositar = () => {
               <select name="method" onChange={(e) => getMethod(e.target.value)} className="form-select mb-2 mt-1">
                 <option value={'none'}>Elija un metodo de deposito</option>
                 {methods.length > 0 && methods.map((tasa, i) => {
-                  const _method = tasa.methodId
-                  return <option key={i} value={JSON.stringify(tasa)}>
-                    {_method.currencyName} ({_method.abbreviation}) - Precio  {tasa.sell}{_method.abbreviation} por dolar
+                  const _method = tasa?.methodId
+                  if (_method?.currencyName) return <option key={i} value={JSON.stringify(tasa)}>
+                    {_method?.currencyName} ({_method?.abbreviation}) - Precio  {tasa.sell}{_method?.abbreviation} por dolar
                   </option>
                 })}
               </select>

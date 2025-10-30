@@ -5,7 +5,7 @@ const DepositModal = () => {
     const { depositModal } = useMethod()
     if (depositModal) return (
         <div className="bg-modal">
-            <div className="text-center modal-body">
+            <div className="text-center body-modal">
                 En un momento sera atendido por uno de nuestros comerciantes
                 verificado
                 <div>

@@ -1,5 +1,4 @@
-import { useEffect, useState } from "react"
-import { useNavigate } from "react-router-dom"
+import { useEffect } from "react"
 import request from "../../libs/request"
 import useRetirarStore from './useRetirarStore'
 import apiUrl from "../../libs/apiurl"
@@ -7,49 +6,56 @@ import useApp from '../../globals/useApp'
 import useNotify from "../../libs/notify/notify"
 import useErrorManager from "../../libs/useErrorManager"
 const useRetirar = () => {
-  const navigate = useNavigate()
+
+  const {
+    setModalManage,
+    userMethods, setUserMethods,
+    amount, setAmount,
+    modal, setModal,
+    total, setTotal,
+    method, setMethod,
+    modalSuccess, setModalSuccess
+  } = useRetirarStore()
+
   const errorManager = useErrorManager()
   const { notify } = useNotify()
-  const { userMethods, setUserMethods } = useRetirarStore()
   const { user } = useApp()
-  const [amount, setAmount] = useState('0.00')
-  const [modal, setModal] = useState(false)
-  const [total, setTotal] = useState(0)
-  const [method, setMethod] = useState({})
-  const [modalSuccess, setModalSuccess] = useState(false)
 
   const getUserMethods = async () => {
+    try {
+      const responseagetAminMethods = await request.get(apiUrl + '/tasas/methods')
+      const adminMethods = responseagetAminMethods.data.body
+      const userMethods = user?.methods
+      const updatedUserMethods = userMethods.map(userMethod => {
+        const adminMatch = adminMethods.find(admin => admin.methodId.methodId === userMethod.methodId);
+        if (adminMatch) {
+          return {
+            ...userMethod,
+            buy: adminMatch.buy,
+            sell: adminMatch.sell,
+            tasaId: adminMatch._id
+          };
+        }
+        return userMethod;
+      });
 
-    if (user?.methods?.length > 0) {
+      setUserMethods(updatedUserMethods)
 
-      try {
-        const responseagetAminMethods = await request.get(apiUrl + '/tasas/methods')
-        const adminMethods = responseagetAminMethods.data.body
-        const userMethods = user?.methods
-        const updatedUserMethods = userMethods.map(userMethod => {
-          const adminMatch = adminMethods.find(admin => admin.methodId.methodId === userMethod.methodId);
-          if (adminMatch) {
-            return {
-              ...userMethod,
-              buy: adminMatch.buy,
-              sell: adminMatch.sell,
-              tasaId: adminMatch._id
-            };
-          }
-          return userMethod;
-        });
+      return updatedUserMethods
 
-        setUserMethods(updatedUserMethods)
-
-      } catch (error) {
-        console.error("Error fetching user methods:", error)
-      }
+    } catch (error) {
+      console.error("Error fetching user methods:", error)
     }
+
   }
 
   useEffect(() => {
     getUserMethods()
   }, [user])
+
+  useEffect(() => {
+    getMethod(null)
+  }, [])
 
   useEffect(() => {
     const e = amount ? { target: { amount } } : null
@@ -130,7 +136,8 @@ const useRetirar = () => {
     userMethods,
     sendWhithdraw,
     modalSuccess,
-    setModalSuccess
+    setModalSuccess,
+    setModalManage
   }
 }
 

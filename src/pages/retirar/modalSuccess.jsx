@@ -54,9 +54,9 @@ const ModalSuccess = ({ modalSuccess, setModalSuccess }) => {
         </>
     }
 
-    if (modalSuccess) return (
-        <div className="bg-modal fade show" style={{ display: 'block' }} tabIndex="-1">
-            <div className="modal-body">
+    if (Object.keys(modalSuccess).length > 0) return (
+        <div className="bg-modal">
+            <div className="body-modal p-3">
                 <div className="modal-content">
                     <div className="modal-header d-block text-center">
                         {getStatus(modalSuccess?.status)}
@@ -68,7 +68,7 @@ const ModalSuccess = ({ modalSuccess, setModalSuccess }) => {
                         </div>
                         <div className="d-flex justify-content-between">
                             <span className="fw-bold">Método de Pago:</span>
-                            <span>{method?.currencyName || 'n/a'} ({method.abbreviation})</span>
+                            <span>{method?.currencyName || 'n/a'} ({method?.abbreviation})</span>
                         </div>
                         <div className="d-flex justify-content-between">
                             <span className="fw-bold">Fecha:</span>

@@ -1,9 +1,9 @@
 import { useState } from "react"
-import useApp from "../../globals/useApp"
-import request from '../../libs/request.js'
-import useErrorManager from "../../libs/useErrorManager.jsx"
-import { handleKeyDown } from "../../libs/utils.js"
-import useLoading from "../../components/loader/useLoading.jsx"
+import useApp from "../../../globals/useApp"
+import request from '../../../libs/request.js'
+import useErrorManager from "../../../libs/useErrorManager.jsx"
+import { handleKeyDown } from "../../../libs/utils.js"
+import useLoading from "../../../components/loader/useLoading.jsx"
 import useConfirmStore from "./useConfirmStore.js"
 import useEnviarStore from "./useEnviarStore.js"
 const apiUrl = import.meta.env.VITE_API_URL

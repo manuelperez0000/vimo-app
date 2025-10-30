@@ -1,0 +1,39 @@
+{
+  "data": [
+    [
+      "userMethods",
+      "setUserMethods",
+      []
+    ],
+    [
+      "editableMethod",
+      "setEditableMethod",
+      null
+    ],
+    [
+      "modalManage",
+      "setModalManage",
+      false
+    ],
+    ["amount", "setAmount", "0.00"],
+    [
+      "modal",
+      "setModal",
+      false
+    ],
+    [
+      "total",
+      "setTotal",
+      0
+    ],[
+      "method",
+      "setMethod",
+      null
+    ],
+    [
+      "modalSuccess",
+      "setModalSuccess",
+      false
+    ]
+  ]
+}

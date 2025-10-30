@@ -1,90 +1,88 @@
-import { useState } from "react";
-import useDeposits from "./useDeposits";
-import useWithdrawals from "./useWithdrawals";
-import useApp from "../../../globals/useApp";
-import money from '../../../libs/money'
+/* import useDeposits from "./useDeposits";
+import useWithdrawals from "./withdrawals/useWithdrawals";
 
+import money from '../../../libs/money' */
+
+import useDepositsWithdrawalsStore from "./store.js";
+import Deposits from "./deposits/deposits.jsx";
+import Whithdrawals from "./withdrawals/whithdrawals.jsx";
+
+import { useState } from "react";
 const Atencion = () => {
-    const { user } = useApp();
+
+    const [view, setView] = useState('deposits'); // 'deposits' or 'withdrawals'
+    const { deposits, withdrawals } = useDepositsWithdrawalsStore();
+    
+    return <div className="container pt-5">
+
+        <div className="row mb-3 pt-5">
+            <div className="col-12 d-flex justify-content-center gap-2">
+                <button className={`btn ${view === 'deposits' ? 'btn-primary' : 'btn-secondary'}`} onClick={() => setView('deposits')}>
+                    Ver Depósitos
+                    {deposits?.length > 0 && (
+                        <span className="badge rounded-pill bg-danger ms-2">{deposits.length}</span>
+                    )}
+                </button>
+                <button className={`btn ${view === 'withdrawals' ? 'btn-primary' : 'btn-secondary'}`} onClick={() => setView('withdrawals')}>
+                    Ver Retiros
+                    {withdrawals?.length > 0 && (
+                        <span className="badge rounded-pill bg-danger ms-2">{withdrawals.length}</span>
+                    )}
+                </button>
+            </div>
+        </div>
+        <div className="row">
+            <div className="col-12">
+                {view === 'deposits' ? <Deposits /> : <Whithdrawals />}
+            </div>
+        </div>
+    </div>
+    /* 
     const { deposits, handleAtender: handleAtenderDeposit } = useDeposits();
     const { withdrawals, handleAtender: handleAtenderWithdrawal } = useWithdrawals();
-    const [view, setView] = useState('deposits'); // 'deposits' or 'withdrawals'
+    const [withdrawalView, setWithdrawalView] = useState('pending'); // 'pending' or 'taken' or 'canceled' or 'finished'
+
+    const filteredWithdrawals = withdrawals?.filter(withdrawal => withdrawal.status === withdrawalView);
+    const filteredDeposits = deposits?.filter(deposit => deposit.status === withdrawalView);
 
     return (
         <div className="container padding-nav">
-            <div className="row mb-3">
-                <div className="col-12 d-flex justify-content-center gap-2">
-                    <button className={`btn ${view === 'deposits' ? 'btn-primary' : 'btn-secondary'}`} onClick={() => setView('deposits')}>
-                        Ver Depósitos
-                        {deposits?.length > 0 && (
-                            <span className="badge rounded-pill bg-danger ms-2">{deposits.length}</span>
-                        )}
-                    </button>
-                    <button className={`btn ${view === 'withdrawals' ? 'btn-primary' : 'btn-secondary'}`} onClick={() => setView('withdrawals')}>
-                        Ver Retiros
-                        {withdrawals?.length > 0 && (
-                            <span className="badge rounded-pill bg-danger ms-2">{withdrawals.length}</span>
-                        )}
-                    </button>
-                </div>
-            </div>
+            
             <div className="row">
                 <div className="col-12">
                     {view === 'deposits' && (
                         <>
-                            {deposits?.length === 0 && <div className="alert alert-info text-center">No hay depósitos pendientes</div>}
-                            {deposits?.map(deposit => (
-                                <div className="row mb-2" key={deposit?._id}>
-                                    <div className="col-12">
-                                        <div className={user?.user?.balance < deposit?.result ? "bg-yellow p-4" : "card p-4"}>
-                                            <div className="flex-between">
-                                                <h2 className="m-0">Deposito</h2>
-                                                <h2 className="m-0">{deposit?.amount} {deposit?.method.abbreviation}</h2>
-                                            </div>
-                                            <hr className="my-2" />
-                                            <div className="flex-between">
-                                                <div>
-                                                    <div className="text-lg"> <strong> A liberar:</strong> $ {money(deposit.result)} USD</div>
-                                                    <span><strong>Cliente:</strong> {deposit?.userFrom.name}</span>
-                                                    <div><strong>Metodo:</strong> {deposit?.method.currencyName}</div>
-                                                    <div>
-                                                        <strong>Status:</strong>
-                                                        <span className={`badge ${deposit?.status === 'pending' ? 'bg-warning' : deposit?.status === 'attended' ? 'bg-success' : 'bg-danger'}`}>
-                                                            {deposit?.status}
-                                                        </span>
-                                                    </div>
-                                                    <div>{new Date(deposit?.createdAt).toLocaleString()}</div>
-                                                </div>
-                                                {user?.user?.balance <= deposit?.result && <div><h1 className="text-warning">Saldo Insuficiente</h1></div>}
-                                                <div className="d-flex gap-3">
-                                                    <button onClick={() => {
-                                                        if (user?.user?.balance < deposit?.result) {
-                                                            alert("Saldo insuficiente");
-                                                        } else {
-                                                            handleAtenderDeposit(deposit?._id);
-                                                        }
-                                                    }} className="btn btn-success" disabled={user?.user?.balance < deposit?.result}>Atender</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                            
+                            {console.log("filteredDeposits: ", filteredDeposits)}
+                            {filteredDeposits?.map(deposit => (
+                                
                             ))}
                         </>
                     )}
                     {view === 'withdrawals' && (
                         <>
-                            {withdrawals?.length === 0 && <div className="alert alert-info text-center">No hay retiros pendientes</div>}
-                            {withdrawals?.map(withdrawal => (
+                            <div className="mb-3">
+                                <label htmlFor="withdrawal-select" className="form-label">Seleccionar tipo de retiros:</label>
+                                <select id="withdrawal-select" className="form-select" value={withdrawalView} onChange={(e) => setWithdrawalView(e.target.value)}>
+                                    <option value="pending">Retiros Pendientes</option>
+                                    <option value="taken">Retiros Tomados</option>
+                                    <option value="canceled">Retiros Cancelados</option>
+                                    <option value="finished">Retiros Finalizados</option>
+                                </select>
+                            </div>
+                            {filteredWithdrawals?.length === 0 && <div className="alert alert-info text-center">{withdrawalView === 'pending' ? 'No hay retiros pendientes' : withdrawalView === 'taken' ? 'No hay retiros tomados' : withdrawalView === 'canceled' ? 'No hay retiros cancelados' : 'No hay retiros finalizados'}</div>}
+
+                            {filteredWithdrawals?.map(withdrawal => (
                                 <div className="row mb-2" key={withdrawal?._id}>
                                     <div className="col-12">
+                                        {console.log("withdrawal: ", withdrawal)}
                                         <div className="card p-4">
                                             <div className="flex-between">
                                                 <div>
                                                     <h2 className="m-0">Retiro</h2>
                                                 </div>
                                                 <div>
-                                                    <h2 className="m-0">{withdrawal?.amount} {withdrawal?.method.abbreviation}</h2>
+                                                    <h2 className="m-0">{withdrawal?.amount} {withdrawal?.method?.abbreviation}</h2>
                                                 </div>
                                             </div>
                                             <hr className="my-1" />
@@ -92,7 +90,7 @@ const Atencion = () => {
                                                 <div>
                                                     <span><strong>Cliente:</strong> {withdrawal?.userFrom.name}</span>
 
-                                                    <div><strong>Metodo:</strong> {withdrawal?.method.currencyName}</div>
+                                                    <div><strong>Metodo:</strong> {withdrawal?.method?.currencyName}</div>
                                                     <div>
                                                         <strong>Status:</strong>
                                                         <span className={`badge ${withdrawal?.status === 'pending' ? 'bg-warning' : withdrawal?.status === 'attended' ? 'bg-success' : 'bg-danger'}`}>
@@ -114,7 +112,7 @@ const Atencion = () => {
                 </div>
             </div>
         </div>
-    );
+    ); */
 }
 
 export default Atencion
